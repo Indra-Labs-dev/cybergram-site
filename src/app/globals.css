@@ -303,9 +303,74 @@ p{margin:0;text-wrap:pretty}
 .row__n{transition:transform 300ms ease,color 300ms ease}
 .row:hover .row__n{transform:scale(1.1);color:var(--ink-3)}
 
+/* --- Countdown component --- */
+.countdown{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  max-width:540px;
+}
+.countdown__item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  background:rgba(10,15,17,.8);
+  border:1px solid var(--line-teal);
+  border-radius:var(--radius-md);
+  padding:16px 12px;
+  position:relative;
+  overflow:hidden;
+  transition:border-color 200ms ease,transform 300ms cubic-bezier(.2,.7,.2,1),box-shadow 300ms cubic-bezier(.2,.7,.2,1);
+}
+.countdown__item:hover{
+  border-color:var(--teal);
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(47,230,184,.08);
+}
+.countdown__val{
+  font-family:var(--font-mono);
+  font-size:clamp(28px,4.5vw,44px);
+  font-weight:600;
+  color:var(--teal);
+  line-height:1;
+  letter-spacing:-.02em;
+  display:inline-block;
+  animation:count-pop 300ms cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes count-pop{
+  0%{transform:scale(0.92);opacity:.7}
+  100%{transform:scale(1);opacity:1}
+}
+.countdown__lbl{
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--ink-4);
+  margin-top:8px;
+}
+.countdown-ready{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 20px;
+  background:var(--bg-teal);
+  border:1px solid var(--teal);
+  border-radius:var(--radius-md);
+  color:var(--ink);
+  font-family:var(--font-mono);
+  font-size:14px;
+}
+.dot--ready{
+  background:#2FE6B8;
+  box-shadow:0 0 12px #2FE6B8;
+}
+
 /* --- Reduced motion --- */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *{transition:none!important;animation:none!important}
   .accent{background:none;-webkit-background-clip:unset;background-clip:unset;-webkit-text-fill-color:var(--teal);color:var(--teal)}
+  .countdown__val{animation:none!important}
 }

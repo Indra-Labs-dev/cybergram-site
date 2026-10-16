@@ -8,6 +8,7 @@ export const SITE = {
   // Aucun canal de contact vérifié n'a été fourni. Renseigner avant publication.
   contactEmail: null as string | null,
   appOpen: false,
+  launchDate: "2026-10-21T12:00:00Z",
 } as const;
 
 export const NAV = [

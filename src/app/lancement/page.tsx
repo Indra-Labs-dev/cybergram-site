@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageHead, Eyebrow } from "@/components/ui";
+import { Countdown } from "@/components/Countdown";
 import { SITE } from "@/lib/site";
 import { BreadcrumbJsonLd } from "@/components/Breadcrumbs";
 
@@ -14,8 +15,18 @@ export default function Page() {
   return (
     <>
       <BreadcrumbJsonLd items={[{ name: "Lancement", href: "/lancement" }]} />
-      <PageHead eyebrow="Lancement" title="L'application est en préparation." lead="CyberGram ouvrira sur app.cybergram.dev. La date et les modalités d'accès seront publiées sur cette page." />
-      <section className="container section prose" style={{ paddingTop: 72 }}>
+      <PageHead eyebrow="Lancement" title="L'ouverture approche." lead="CyberGram sera opérationnel dans 5 jours sur app.cybergram.dev. Suivez le compte à rebours ci-dessous :" />
+      
+      <section className="container" style={{ paddingTop: 40 }}>
+        <div className="launch" style={{ maxWidth: 820 }}>
+          <Eyebrow>Temps restant avant l&apos;ouverture</Eyebrow>
+          <div style={{ marginTop: 24 }}>
+            <Countdown />
+          </div>
+        </div>
+      </section>
+
+      <section className="container section prose" style={{ paddingTop: 56 }}>
         <Eyebrow>Statut</Eyebrow>
         <ul className="ticks">
           <li>Site public : en ligne sur cybergram.dev.</li>

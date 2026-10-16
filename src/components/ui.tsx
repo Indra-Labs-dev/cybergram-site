@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Countdown } from "./Countdown";
 
 export function Eyebrow({ children, tone }: { children: React.ReactNode; tone?: "amber" }) {
   return <div className={`eyebrow${tone ? " eyebrow--" + tone : ""}`}>{children}</div>;
@@ -29,11 +30,16 @@ export function LaunchBlock() {
   return (
     <section className="container section" aria-labelledby="launch-title">
       <div className="launch">
-        <Eyebrow>Lancement</Eyebrow>
-        <h2 id="launch-title" className="h2" style={{ maxWidth: "20ch" }}>L&apos;application ouvrira sur app.cybergram.dev.</h2>
-        <p className="body">L&apos;accès à la plateforme est en préparation. La date d&apos;ouverture et les modalités d&apos;inscription seront annoncées sur ce site. Aucune inscription n&apos;est collectée pour le moment.</p>
-        <div className="btn-row">
-          <Link href="/lancement" className="btn btn--primary">Où en est le lancement</Link>
+        <Eyebrow>Compte à rebours</Eyebrow>
+        <h2 id="launch-title" className="h2" style={{ maxWidth: "20ch" }}>Lancement officiel dans quelques jours.</h2>
+        <p className="body">L&apos;accès à la plateforme ouvrira sur app.cybergram.dev. Suivez le compte à rebours avant l&apos;ouverture officielle :</p>
+        
+        <div style={{ marginTop: 32 }}>
+          <Countdown />
+        </div>
+
+        <div className="btn-row" style={{ marginTop: 32 }}>
+          <Link href="/lancement" className="btn btn--primary">Détails du lancement</Link>
           <Link href="/#faq" className="btn btn--ghost">Lire la FAQ</Link>
         </div>
       </div>
