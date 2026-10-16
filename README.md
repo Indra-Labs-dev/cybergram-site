@@ -44,7 +44,7 @@ Workers & Pages → cybergram-site → Settings → Domains & Routes → Add Cus
 - `public/_redirects` : alias /ecosystem, /features, /about, /app.
 
 ## Checklist post-déploiement
-- [ ] `/`, `/ecosysteme`, `/fonctionnalites`, `/hackpen`, `/a-propos`, `/lancement`, `/glossaire` → 200
+- [ ] `/`, `/ecosysteme`, `/fonctionnalites`, `/hackpen`, `/a-propos`, `/lancement`, `/glossaire`, `/ctf` → 200
 - [ ] `/inexistant` → 404 avec la page CyberGram
 - [ ] `/sitemap.xml` et `/robots.txt` accessibles, URLs en https://cybergram.dev
 - [ ] En-têtes : `curl -sI https://cybergram.dev` (CSP, HSTS, nosniff)

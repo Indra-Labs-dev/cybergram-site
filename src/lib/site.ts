@@ -21,6 +21,7 @@ export const NAV = [
   { href: "/ecosysteme", label: "Écosystème" },
   { href: "/fonctionnalites", label: "Fonctionnalités" },
   { href: "/hackpen", label: "HackPen" },
+  { href: "/ctf", label: "Mini-CTF" },
   { href: "/a-propos", label: "À propos" },
 ] as const;
 

@@ -3,6 +3,7 @@ import { HackPenBand } from "@/components/Sections";
 import { BreadcrumbJsonLd } from "@/components/Breadcrumbs";
 import { createPageMetadata } from "@/lib/page-metadata";
 import { HackPenDemo } from "@/components/HackPenDemo";
+import { HackPenTerminal } from "@/components/HackPenTerminal";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 
 export const metadata = createPageMetadata({
@@ -33,8 +34,9 @@ export default function Page() {
       <section className="container section" aria-labelledby="demo">
         <Eyebrow tone="amber">Démonstration</Eyebrow>
         <h2 id="demo" className="h2">Une mission, de bout en bout.</h2>
-        <p className="body" style={{ marginTop: 20 }}>Un exemple fictif sur un domaine réservé à la documentation, pour voir comment s&apos;enchaînent les cinq étapes.</p>
-        <div style={{ marginTop: 48 }}><HackPenDemo /></div>
+        <p className="body" style={{ marginTop: 20 }}>Prenez les commandes : un bac à sable fictif sur un domaine réservé à la documentation. Essayez aussi une cible hors périmètre.</p>
+        <div style={{ marginTop: 48 }}><HackPenTerminal /></div>
+        <noscript><div style={{ marginTop: 32 }}><HackPenDemo /></div></noscript>
       </section>
       <section className="container section" aria-labelledby="views">
         <Eyebrow>Interfaces</Eyebrow>

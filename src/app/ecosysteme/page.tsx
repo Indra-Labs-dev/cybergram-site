@@ -3,7 +3,9 @@ import { PageHead, Eyebrow, Shot, LaunchBlock } from "@/components/ui";
 import { Pillars } from "@/components/Sections";
 import { BreadcrumbJsonLd } from "@/components/Breadcrumbs";
 import { createPageMetadata } from "@/lib/page-metadata";
-import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { Term } from "@/components/Term";
+import { CveCard } from "@/components/CveCard";
+import { EcoMap } from "@/components/EcoMap";
 
 export const metadata = createPageMetadata({
   title: "Écosystème",
@@ -14,7 +16,7 @@ export const metadata = createPageMetadata({
 const PARTS = [
   { t: "CyberGram", role: "Plateforme principale", d: "L'espace commun : compte, profil, notifications et recherche globale. Il donne accès à l'apprentissage, à la communauté et à l'intelligence." },
   { t: "Ressources", role: "Apprendre · Blog · Événements", d: "Cours, tutoriels, articles et agenda d'événements pour progresser et rester à jour." },
-  { t: "Intelligence", role: "Veille", d: "CVE, menaces, acteurs, IOC et rapports, présentés pour être compris et exploités." },
+  { t: "Intelligence", role: "Veille", d: <><Term t="CVE" />, menaces, <Term t="Acteur de la menace">acteurs</Term>, <Term t="IOC" /> et rapports, présentés pour être compris et exploités.</> },
   { t: "HackPen", role: "Pratique", d: "Environnement de reconnaissance et d'investigation : projets, cibles, workflows, findings et rapports." },
 ];
 
@@ -24,6 +26,11 @@ export default function Page() {
       <BreadcrumbJsonLd items={[{ name: "Écosystème", href: "/ecosysteme" }]} />
       <PageHead eyebrow="Écosystème" title="Un parcours continu, de la lecture à la pratique." lead="CyberGram est organisé autour de trois verbes. Chaque composant a un rôle précis et renvoie vers les autres." />
       <section className="container section" style={{ paddingTop: 72 }}><Pillars /></section>
+      <section className="container section" aria-labelledby="carte">
+        <Eyebrow>Carte</Eyebrow>
+        <h2 id="carte" className="h2">Comment tout se relie.</h2>
+        <div style={{ marginTop: 48 }}><EcoMap /></div>
+      </section>
       <section className="container section" aria-labelledby="parts">
         <Eyebrow>Composants</Eyebrow>
         <h2 id="parts" className="h2">Qui fait quoi.</h2>
@@ -44,17 +51,7 @@ export default function Page() {
         <Eyebrow>Exemple</Eyebrow>
         <h2 id="exemple" className="h2">Une fiche Intelligence, en clair.</h2>
         <p className="body" style={{ marginTop: 20 }}>Comment une vulnérabilité publique réelle serait présentée : l&apos;essentiel d&apos;abord, le vocabulaire expliqué.</p>
-        <AnimateOnScroll as="article" className="cve" aria-labelledby="cve-id">
-          <header className="cve__head"><span id="cve-id" className="cve__id">CVE-2021-44228</span><span className="cve__sev">Critique · CVSS 10.0</span></header>
-          <dl className="cve__grid">
-            <div><dt>Nom courant</dt><dd>Log4Shell</dd></div>
-            <div><dt>Composant</dt><dd>Apache Log4j 2, bibliothèque de journalisation Java</dd></div>
-            <div><dt>En une phrase</dt><dd>Un texte écrit dans un journal pouvait pousser le serveur à télécharger et exécuter du code distant.</dd></div>
-            <div><dt>Pourquoi c&apos;est grave</dt><dd>Log4j est présent dans un très grand nombre d&apos;applications, et l&apos;exploitation ne demandait aucune authentification.</dd></div>
-            <div><dt>Correctif</dt><dd>Mettre à jour Log4j (versions 2.17.1 et suivantes pour Java 8).</dd></div>
-            <div><dt>Pour aller plus loin</dt><dd><Link href="/glossaire#cve">CVE</Link>, <Link href="/glossaire#cvss">CVSS</Link>, <Link href="/glossaire#ioc">IOC</Link> dans le glossaire</dd></div>
-          </dl>
-        </AnimateOnScroll>
+        <CveCard />
       </section>
       <LaunchBlock />
     </>

@@ -1,6 +1,7 @@
 import { PILLARS, HACKPEN_STEPS, AUDIENCES, FAQ } from "@/lib/content";
 import { Eyebrow, Shot } from "./ui";
 import { AnimateOnScroll } from "./AnimateOnScroll";
+import { Term } from "./Term";
 
 export function Pillars() {
   return (
@@ -24,7 +25,7 @@ export function HackPenBand({ headingLevel = 2 }: { headingLevel?: 1 | 2 }) {
         <Eyebrow tone="amber">HackPen · Penetration testing platform</Eyebrow>
         <div className="split" style={{ marginTop: 20 }}>
           <H id="hp-title" className="h2" style={{ marginTop: 0 }}>Passer de la veille à la pratique.</H>
-          <p className="body">HackPen organise un travail de reconnaissance et d&apos;investigation autorisé : projets, cibles, workflows d&apos;outils et findings, jusqu&apos;au rapport.</p>
+          <p className="body">HackPen organise un travail de <Term t="Reconnaissance">reconnaissance</Term> et d&apos;investigation autorisé : projets, cibles, workflows d&apos;outils et <Term t="Finding">findings</Term>, jusqu&apos;au rapport.</p>
         </div>
         <div style={{ marginTop: 56 }}><Shot src="/images/workflow.png" alt="Capture du Workflow Builder de HackPen" caption={null} /></div>
         <div className="pipeline">

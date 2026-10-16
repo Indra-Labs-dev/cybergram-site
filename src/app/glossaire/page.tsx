@@ -4,6 +4,7 @@ import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { createPageMetadata } from "@/lib/page-metadata";
 import { GLOSSARY } from "@/lib/content";
 import { SITE } from "@/lib/site";
+import { termSlug } from "@/components/Term";
 
 export const metadata = createPageMetadata({
   title: "Glossaire",
@@ -11,7 +12,7 @@ export const metadata = createPageMetadata({
   path: "/glossaire",
 });
 
-const slug = (t: string) => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const slug = termSlug;
 
 const jsonLd = {
   "@context": "https://schema.org",

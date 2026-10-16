@@ -7,9 +7,9 @@ export function Eyebrow({ children, tone }: { children: React.ReactNode; tone?: 
   return <div className={`eyebrow${tone ? " eyebrow--" + tone : ""}`}>{children}</div>;
 }
 
-export function Shot({ src, alt, bar, caption = "Capture d'interface · données de démonstration", priority, children }: { src: string; alt: string; bar?: string; caption?: string | null; priority?: boolean; children?: React.ReactNode }) {
+export function Shot({ src, alt, bar, caption = "Capture d'interface · données de démonstration", priority, children, className }: { src: string; alt: string; bar?: string; caption?: string | null; priority?: boolean; children?: React.ReactNode; className?: string }) {
   return (
-    <figure className="shot">
+    <figure className={`shot${className ? " " + className : ""}`}>
       {bar && <div className="shot__bar"><span>{bar}</span><span>Données de démonstration</span></div>}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} width={1536} height={1024} loading={priority ? "eager" : "lazy"} decoding="async" />

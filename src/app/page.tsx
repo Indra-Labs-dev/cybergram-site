@@ -1,10 +1,13 @@
 import Link from "next/link";
 import { Eyebrow, Shot, LaunchBlock } from "@/components/ui";
-import { Pillars, HackPenBand, Audiences, Faq } from "@/components/Sections";
+import { HackPenBand, Audiences, Faq } from "@/components/Sections";
 import { Modules } from "@/components/Modules";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { Terminal } from "@/components/Terminal";
 import { Hotspots } from "@/components/Hotspots";
+import { Term } from "@/components/Term";
+import { HeroTitle } from "@/components/HeroTitle";
+import { ScrollStory } from "@/components/ScrollStory";
 import { SITE } from "@/lib/site";
 import { FAQ } from "@/lib/content";
 import { createPageMetadata } from "@/lib/page-metadata";
@@ -55,7 +58,7 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <section className="container hero" style={{ paddingTop: "clamp(64px,9vw,88px)" }} aria-labelledby="hero-title">
         <div className="eyebrow eyebrow--muted"><span className="dot" />Plateforme en préparation · cybergram.dev</div>
-        <h1 id="hero-title" className="h1" style={{ marginTop: 28 }}>La cybersécurité, <span className="accent">rendue accessible.</span></h1>
+        <HeroTitle id="hero-title" plain="La cybersécurité," accent="rendue accessible." />
         <Terminal />
         <div className="split" style={{ marginTop: 40 }}>
           <p className="lead">{SITE.description}</p>
@@ -66,22 +69,12 @@ export default function Home() {
         </div>
       </section>
       <section className="container" style={{ paddingTop: 64 }} aria-label="Aperçu de l'interface CyberGram">
-        <AnimateOnScroll variant="scale-in" duration={800}>
-          <Shot src="/images/dashboard.png" alt="Capture de l'interface CyberGram : tableau de bord personnel" bar="app.cybergram.dev / accueil" priority>
-            <Hotspots />
-          </Shot>
-        </AnimateOnScroll>
+        <Shot className="shot--scan" src="/images/dashboard.png" alt="Capture de l'interface CyberGram : tableau de bord personnel" bar="app.cybergram.dev / accueil" priority>
+          <Hotspots />
+        </Shot>
       </section>
 
-      <section className="container section" aria-labelledby="eco-title">
-        <AnimateOnScroll variant="fade-up">
-          <div className="split">
-            <div><Eyebrow>01 — Écosystème</Eyebrow><h2 id="eco-title" className="h2">Trois verbes, un seul espace.</h2></div>
-            <p className="body">La signature de CyberGram résume son organisation. On apprend avec des cours et des parcours, on échange au sein de la communauté, et on explore les menaces puis les surfaces d&apos;attaque avec Intelligence et HackPen.</p>
-          </div>
-        </AnimateOnScroll>
-        <Pillars />
-      </section>
+      <ScrollStory />
 
       <section className="container section" aria-labelledby="feat-title">
         <AnimateOnScroll variant="fade-up">
@@ -100,6 +93,18 @@ export default function Home() {
           <h2 id="pub-title" className="h2" style={{ maxWidth: "20ch" }}>Du premier cours au premier rapport.</h2>
         </AnimateOnScroll>
         <Audiences />
+      </section>
+
+      <section className="container section" aria-labelledby="ctf-title">
+        <AnimateOnScroll className="ctf-teaser">
+          <div>
+            <Eyebrow>05 — À vous de jouer</Eyebrow>
+            <h2 id="ctf-title" className="h2">Trois drapeaux avant l&apos;ouverture.</h2>
+            <p className="body" style={{ marginTop: 20 }}>Décoder un en-tête, repérer une attaque dans un journal, auditer une réponse HTTP. Un mini-CTF jouable dans le navigateur, sans inscription.</p>
+            <div className="btn-row" style={{ marginTop: 28 }}><Link href="/ctf" className="btn btn--primary">Lancer le mini-CTF →</Link></div>
+          </div>
+          <pre className="ctf__data ctf__data--teaser" aria-hidden="true"><code>{"X-Debug-Token: Q0d7YmFzZTY0X25l…\n\n09:12:06 auth failed  src=203.0.113.42\n09:12:11 auth ok      src=203.0.113.42\n\ncontent-security-policy: ???"}</code></pre>
+        </AnimateOnScroll>
       </section>
 
       <AnimateOnScroll variant="fade-up">
