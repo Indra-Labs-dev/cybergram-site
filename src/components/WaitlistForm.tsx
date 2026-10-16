@@ -18,22 +18,21 @@ export function WaitlistForm() {
     setStatus("loading");
 
     try {
-      // Stockage local / synchronisation optimiste pré-lancement
-      const existing = JSON.parse(localStorage.getItem("cybergram_waitlist") || "[]");
-      if (!existing.includes(email)) {
-        existing.push(email);
-        localStorage.setItem("cybergram_waitlist", JSON.stringify(existing));
-      }
-
-      // Simulation d'envoi réseau court pour UX interactive fluide
-      await new Promise((res) => setTimeout(res, 500));
+      const website = new FormData(e.currentTarget).get("website");
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, website }),
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || "Inscription impossible.");
 
       setStatus("success");
       setMessage("Merci ! Votre inscription est enregistrée. Vous serez prévenu(e) en priorité le jour du lancement.");
       setEmail("");
-    } catch {
+    } catch (error) {
       setStatus("error");
-      setMessage("Une erreur est survenue. Veuillez réessayer ultérieurement.");
+      setMessage(error instanceof Error ? error.message : "Une erreur est survenue. Veuillez réessayer ultérieurement.");
     }
   };
 
@@ -48,6 +47,7 @@ export function WaitlistForm() {
 
   return (
     <form className="waitlist-form" onSubmit={handleSubmit} noValidate>
+      <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="waitlist-form__trap" />
       <div className="waitlist-form__row">
         <input
           type="email"

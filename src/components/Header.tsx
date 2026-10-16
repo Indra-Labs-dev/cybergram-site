@@ -27,7 +27,7 @@ export function Header() {
       <div className="container header__bar">
         <Link href="/" className="logo-link" aria-label="CyberGram, accueil">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/logo.svg" alt="CyberGram" width={168} height={37} className="logo-svg" />
+          <img src="/images/logo-cropped.png" alt="CyberGram" width={180} height={36} className="logo-img" />
         </Link>
         <nav className="nav" aria-label="Navigation principale">
           {NAV.map((n) => (

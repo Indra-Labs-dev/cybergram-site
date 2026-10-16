@@ -492,6 +492,7 @@ p{margin:0;text-wrap:pretty}
   flex-wrap:wrap;
   gap:10px;
 }
+.waitlist-form__trap{position:absolute;left:-10000px;width:1px;height:1px;opacity:0}
 .waitlist-form__input{
   flex:1;
   min-width:240px;
@@ -544,10 +545,7 @@ p{margin:0;text-wrap:pretty}
   align-items:center;
   line-height:0;
 }
-.logo-svg{
-  height:37px;
-  width:auto;
-}
+.logo-img{display:block;height:36px;width:auto}
 
 /* --- Reduced motion --- */
 @media (prefers-reduced-motion:reduce){

@@ -1,10 +1,13 @@
-// Worker "assets-only" : aucun code serveur, tout est servi depuis ./out
+// Pages statiques exportées par Next.js et Worker pour l'API de la liste d'attente.
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "cybergram-site",
+  "main": "src/worker.ts",
   "compatibility_date": "2026-10-01",
   "assets": {
     "directory": "./out",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"],
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page"
   }

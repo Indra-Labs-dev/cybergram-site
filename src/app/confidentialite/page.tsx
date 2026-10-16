@@ -10,7 +10,7 @@ export default function Page() {
       <PageHead eyebrow="Informations légales" title="Politique de confidentialité" lead="Principes de protection de vos données personnelles et respect de votre vie privée." />
       <section className="container section prose" style={{ paddingTop: 56 }}>
         <h2>Données collectées</h2>
-        <p>Le site vitrine cybergram.dev ne dépose aucun cookie publicitaire ou traceur tiers. Dans le cadre de la liste d&apos;attente pré-lancement, seule votre adresse e-mail est collectée lorsque vous soumettez volontairement le formulaire d&apos;alerte, exclusivement pour vous notifier de l&apos;ouverture de la plateforme.</p>
+        <p>Le site vitrine cybergram.dev ne dépose aucun cookie publicitaire ou traceur tiers. Dans le cadre de la liste d&apos;attente pré-lancement, votre adresse e-mail et la date d&apos;inscription sont enregistrées lorsque vous soumettez volontairement le formulaire d&apos;alerte, exclusivement pour vous notifier de l&apos;ouverture de la plateforme.</p>
         <h2>Journaux techniques</h2>
         <p>Des journaux de requêtes standard (adresses IP anonymisées, date et heure, page consultée) peuvent être temporairement traités par notre hébergeur Cloudflare à des fins strictes de sécurité et de prévention des attaques DDoS.</p>
         <h2>Responsable du traitement</h2>

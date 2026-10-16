@@ -46,8 +46,8 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/images/logo.png" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.png", type: "image/png", sizes: "32x32" },
     ],
   },
   openGraph: {
@@ -57,14 +57,14 @@ export const metadata: Metadata = {
     title: `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
     url: SITE.url,
-    images: [{ url: "/images/og-image.svg", width: 1200, height: 630, alt: "CyberGram — Apprendre. Échanger. Explorer." }],
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "CyberGram — Apprendre. Échanger. Explorer." }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
     creator: "@CyberGram",
-    images: ["/images/og-image.svg"],
+    images: ["/images/og-image.png"],
   },
 };
 
