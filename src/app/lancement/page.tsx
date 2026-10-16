@@ -15,7 +15,7 @@ export default function Page() {
   return (
     <>
       <BreadcrumbJsonLd items={[{ name: "Lancement", href: "/lancement" }]} />
-      <PageHead eyebrow="Lancement" title="L'ouverture approche." lead="CyberGram sera opérationnel dans 5 jours sur app.cybergram.dev. Suivez le compte à rebours ci-dessous :" />
+      <PageHead eyebrow="Lancement" title="L'ouverture approche." lead="CyberGram sera opérationnel dans 7 jours sur app.cybergram.dev. Suivez le compte à rebours ci-dessous :" />
       
       <section className="container" style={{ paddingTop: 40 }}>
         <div className="launch" style={{ maxWidth: 820 }}>
