@@ -26,11 +26,11 @@ npm run check        # lint + typecheck + build + test
 2. Configurer le secret Neon avec `npx wrangler secret put DATABASE_URL`, puis lancer `npm run deploy` (build puis `wrangler deploy`) — ou, dans le dashboard Workers : connecter le dépôt, build command `npm run build`, deploy command `npx wrangler deploy`.
 3. Vérifier l'URL `*.workers.dev` fournie.
 
-### Domaine (à faire manuellement)
-Workers & Pages → cybergram-site → Settings → Domains & Routes → Add Custom Domain → `cybergram.dev` (et `www.cybergram.dev` avec redirection vers l'apex via une règle de redirection). Ne pas lier `app.` ni `api.` à ce Worker.
+### Domaine
+`cybergram.dev` est déclaré comme domaine personnalisé dans `routes` de `wrangler.jsonc`. Reste manuel : ajouter `www.cybergram.dev` comme Custom Domain, avec une règle de redirection vers l'apex. Ne pas lier `app.` ni `api.` à ce Worker.
 
 ### Variables d'environnement
-- Le site statique n'en utilise pas côté navigateur. Le Worker nécessite `DATABASE_URL` (URL Neon poolée), `BREVO_API_KEY`, `EMAIL_FROM` (adresse d'expéditeur vérifiée chez Brevo) et `WAITLIST_ADMIN_TOKEN` (secret long aléatoire). `EMAIL_FROM_NAME` est facultatif. Configurer chaque valeur avec `npx wrangler secret put NOM`.
+- Le site statique n'en utilise pas côté navigateur. Le Worker nécessite les secrets `DATABASE_URL` (URL Neon poolée), `BREVO_API_KEY`, `WAITLIST_ADMIN_TOKEN` et `CTF_SECRET` (secrets longs aléatoires), à configurer avec `npx wrangler secret put NOM`. `EMAIL_FROM` (adresse vérifiée chez Brevo) et le facultatif `EMAIL_FROM_NAME` sont déclarés dans `vars` de `wrangler.jsonc`. Ne jamais créer de variables en clair dans le dashboard : `wrangler deploy` les supprime.
 - En local, définir ces valeurs dans `.dev.vars` pour `wrangler dev` (fichier ignoré par Git, ne jamais le committer).
 - Les migrations `migrations/001_launch_waitlist.sql` et `migrations/002_waitlist_notifications.sql` créent la liste, les jetons de désinscription et les états d'envoi. `migrations/003_ctf.sql` ajoute le classement du mini-CTF et la priorité d'envoi (à appliquer avant le déploiement). Le CTF exige le secret `CTF_SECRET` (`npx wrangler secret put CTF_SECRET`). L'inscription passe par `POST /api/waitlist`.
 - Au lancement, appeler `POST /api/notify-launch` avec `Authorization: Bearer <WAITLIST_ADMIN_TOKEN>`. L'endpoint envoie jusqu'à 50 e-mails par appel via l'API transactionnelle Brevo, exclut les désinscrits et marque les messages acceptés par Brevo pour éviter les renvois. Répéter jusqu'à ce que `remaining` soit `false`.
