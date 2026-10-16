@@ -1,5 +1,6 @@
 import { neon } from "@neondatabase/serverless";
 import { SITE } from "@/lib/site";
+import { createLaunchEmail } from "@/lib/email-templates";
 
 interface Env {
   ASSETS: { fetch(request: Request): Promise<Response> };
@@ -50,15 +51,16 @@ export default {
           const claimed = await sql`UPDATE launch_waitlist SET notification_claimed_at = NOW() WHERE id = ${subscriber.id} AND notified_at IS NULL AND (notification_claimed_at IS NULL OR notification_claimed_at < NOW() - INTERVAL '15 minutes') RETURNING id`;
           if (!claimed.length) continue;
           const unsubscribeUrl = `${SITE.url}/api/unsubscribe?token=${encodeURIComponent(String(subscriber.unsubscribe_token))}`;
+          const email = createLaunchEmail({ appUrl: SITE.appUrl, unsubscribeUrl });
           const response = await fetch("https://api.brevo.com/v3/smtp/email", {
             method: "POST",
             headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json" },
             body: JSON.stringify({
               sender: { email: env.EMAIL_FROM, name: env.EMAIL_FROM_NAME || SITE.name },
               to: [{ email: subscriber.email }],
-              subject: "CyberGram est ouvert !",
-              htmlContent: `<p>CyberGram est maintenant ouvert.</p><p><a href="${SITE.appUrl}">Accéder à CyberGram</a></p><p><a href="${unsubscribeUrl}">Se désinscrire</a> de cette liste.</p>`,
-              textContent: `CyberGram est maintenant ouvert. Accéder à CyberGram : ${SITE.appUrl}\n\nSe désinscrire de cette liste : ${unsubscribeUrl}`,
+              subject: email.subject,
+              htmlContent: email.html,
+              textContent: email.text,
             }),
           });
           if (response.ok) {

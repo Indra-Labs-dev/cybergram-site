@@ -4,6 +4,7 @@ out/
 *.tsbuildinfo
 next-env.d.ts
 .neon
+.env
 .env.local
 .dev.vars
 

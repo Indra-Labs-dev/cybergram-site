@@ -34,6 +34,7 @@ Workers & Pages → cybergram-site → Settings → Domains & Routes → Add Cus
 - En local, définir ces valeurs dans `.dev.vars` pour `wrangler dev` (fichier ignoré par Git, ne jamais le committer).
 - Les migrations `migrations/001_launch_waitlist.sql` et `migrations/002_waitlist_notifications.sql` créent la liste, les jetons de désinscription et les états d'envoi. L'inscription passe par `POST /api/waitlist`.
 - Au lancement, appeler `POST /api/notify-launch` avec `Authorization: Bearer <WAITLIST_ADMIN_TOKEN>`. L'endpoint envoie jusqu'à 50 e-mails par appel via l'API transactionnelle Brevo, exclut les désinscrits et marque les messages acceptés par Brevo pour éviter les renvois. Répéter jusqu'à ce que `remaining` soit `false`.
+- Le courriel de lancement utilise un template HTML responsive et une version texte (`src/lib/email-templates.ts`). L'authentification actuelle se fait par `BREVO_API_KEY` ; les paramètres `BREVO_SMTP_*` restent inutilisés tant que l'envoi n'est pas basculé en SMTP.
 - Avant cet envoi, passer `appOpen` à `true` dans `src/lib/site.ts` et redéployer ; l'API refuse d'envoyer tant que la plateforme n'est pas marquée ouverte.
 - Chaque notification contient un lien de désinscription (`GET /api/unsubscribe?token=...`).
 
