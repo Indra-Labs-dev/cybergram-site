@@ -1,0 +1,88 @@
+<template>
+  <div data-hf-id="hf-7sdp" id="root" data-composition-id="01-hook" data-width="1920" data-height="1080" data-start="0" data-duration="5">
+    <style>
+      @font-face { font-family: "Sora"; src: url("assets/fonts/Sora.woff2") format("woff2"); font-weight: 100 800; }
+      @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono.woff2") format("woff2"); font-weight: 100 800; }
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; }
+      #root .clip { position: absolute; }
+      #h01-bg { left: 0; top: 0; width: 1920px; height: 1080px; background-color: #06090B;
+        background-image: linear-gradient(#1A2427 1px, transparent 1px), linear-gradient(90deg, #1A2427 1px, transparent 1px);
+        background-size: 120px 120px; background-position: -1px -1px; }
+      #h01-bgfade { position: absolute; inset: 0; background: #06090B; opacity: 0.55; }
+      #h01-stage { left: 106px; top: 250px; width: 1708px; height: 640px; }
+      #h01-prompt { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 26px; letter-spacing: 0.14em; color: #2FE6B8; text-transform: uppercase; margin-bottom: 36px; }
+      .h01-mono { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 72px; line-height: 1.25; color: #F4F8F7; white-space: pre; height: 90px; }
+      #h01-l2 { color: #B7C2BF; }
+      #h01-big { font-family: "Sora", sans-serif; font-weight: 800; font-size: 124px; line-height: 1.02; letter-spacing: -0.03em; color: #F4F8F7; white-space: pre; position: absolute; left: 0; top: 70px; }
+      #h01-acc { color: #2FE6B8; }
+      #h01-br { display: none; }
+      .h01-caret { display: inline-block; width: 0.08em; height: 0.92em; margin-left: 0.06em; background: #2FE6B8; vertical-align: -0.1em; opacity: 0; }
+    </style>
+
+    <div data-hf-id="hf-wb42" id="h01-bg" class="clip" data-start="0" data-duration="5" data-track-index="0"><div data-hf-id="hf-vt0w" id="h01-bgfade"></div></div>
+
+    <div data-hf-id="hf-eq4c" id="h01-stage" class="clip" data-start="0" data-duration="5" data-track-index="1">
+      <div data-hf-id="hf-7730" id="h01-prompt">~/cybergram $</div>
+      <div data-hf-id="hf-c7rm" data-layout-allow-overlap id="h01-mono">
+        <div data-hf-id="hf-4l9b" class="h01-mono"><span data-hf-id="hf-wfjl" id="h01-l1"></span><span data-hf-id="hf-wlf0" id="h01-c1" class="h01-caret"></span></div>
+        <div data-hf-id="hf-bk0v" class="h01-mono"><span data-hf-id="hf-0dnm" id="h01-l2"></span><span data-hf-id="hf-59av" id="h01-c2" class="h01-caret"></span></div>
+      </div>
+      <div data-hf-id="hf-tl7z" id="h01-big" data-layout-allow-overlap><span data-hf-id="hf-zugk" id="h01-s1"></span><br data-hf-id="hf-mt50" id="h01-br"><span data-hf-id="hf-8icf" id="h01-s2"></span><span data-hf-id="hf-bozb" id="h01-acc"></span><span data-hf-id="hf-ffq1" id="h01-s4"></span><span data-hf-id="hf-1b6u" id="h01-c3" class="h01-caret"></span></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        var q = function (id) { return document.getElementById(id); };
+        var tl = gsap.timeline({ paused: true });
+        var L1 = "Cours, forums, veille, outils…";
+        var L2 = "éparpillés partout.";
+
+        function type(el, text, start, step) {
+          for (var i = 1; i <= text.length; i++) tl.set(el, { textContent: text.slice(0, i) }, start + (i - 1) * step);
+          return start + text.length * step;
+        }
+        function blink(el, from, to, period) {
+          var on = true;
+          for (var t = from; t < to; t += period / 2) { tl.set(el, { opacity: on ? 1 : 0 }, t); on = !on; }
+        }
+
+        // background settles in (hero caret visible immediately)
+        tl.fromTo("#h01-bgfade", { opacity: 0.55 }, { opacity: 0, duration: 0.6, ease: "power2.out" }, 0);
+        tl.fromTo("#h01-prompt", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, 0);
+
+        // Scene 1: type line 1
+        tl.set("#h01-c1", { opacity: 1 }, 0);
+        var t1 = type("#h01-l1", L1, 0.15, 0.042);           // ends ~1.41
+        blink("#h01-c1", t1 + 0.1, 1.6, 0.3);
+
+        // Scene 2: line 2 types beneath, then both backspace
+        tl.set("#h01-c1", { opacity: 0 }, 1.6);
+        tl.set("#h01-c2", { opacity: 1 }, 1.6);
+        var t2 = type("#h01-l2", L2, 1.6, 0.03);              // ends ~2.17
+        var n = Math.max(L1.length, L2.length), bs = 0.012, b0 = 2.24;
+        for (var i = 1; i <= n; i++) {
+          tl.set("#h01-l1", { textContent: L1.slice(0, Math.max(0, L1.length - i)) }, b0 + i * bs);
+          tl.set("#h01-l2", { textContent: L2.slice(0, Math.max(0, L2.length - i)) }, b0 + i * bs);
+        }
+        tl.set("#h01-c2", { opacity: 0 }, 2.6);
+        tl.set("#h01-prompt", { opacity: 0.45 }, 2.6);
+
+        // Scene 3: Sora retype, accent on "même endroit"
+        tl.set("#h01-c3", { opacity: 1 }, 2.6);
+        var s = 2.64, st = 0.033;
+        s = type("#h01-s1", "Et si tout était", s, st);
+        tl.set("#h01-br", { display: "inline" }, s);
+        s = type("#h01-s2", "au ", s, st);
+        s = type("#h01-acc", "même endroit", s, st);
+        s = type("#h01-s4", " ?", s, st);                      // ends ~3.75
+        tl.fromTo("#h01-big", { y: 6 }, { y: 0, duration: 1.1, ease: "power2.out" }, 2.6);
+        blink("#h01-c3", s + 0.05, 4.5, 0.5);
+        tl.set({}, {}, 4.5);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines["01-hook"] = tl;
+      })();
+    </script>
+  </div>
+</template>

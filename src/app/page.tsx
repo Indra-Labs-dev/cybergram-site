@@ -10,6 +10,7 @@ import { HeroTitle } from "@/components/HeroTitle";
 import { ScrollStory } from "@/components/ScrollStory";
 import { HeroField } from "@/components/HeroField";
 import { Logo3D } from "@/components/Logo3D";
+import { VideoTeaserButton } from "@/components/VideoTeaser";
 import { SITE } from "@/lib/site";
 import { FAQ } from "@/lib/content";
 import { createPageMetadata } from "@/lib/page-metadata";
@@ -68,7 +69,7 @@ export default function Home() {
           <p className="lead">{SITE.description}</p>
           <div className="btn-row">
             <Link href="/ecosysteme" className="btn btn--primary">Découvrir l&apos;écosystème →</Link>
-            <Link href="/lancement" className="btn btn--ghost">Où en est le lancement</Link>
+            <VideoTeaserButton />
           </div>
         </div>
       </section>

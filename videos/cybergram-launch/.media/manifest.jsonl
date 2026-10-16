@@ -1,0 +1,6 @@
+{"id":"bgm_001","type":"bgm","path":"assets/bgm/track.mp3","source":"search","description":"minimal electronic, dark tech ambient, steady pulse, confident build, no vocals","duration":61,"provenance":{"provider":"heygen","prompt":"minimal electronic, dark tech ambient, steady pulse, confident build, no vocals"}}
+{"id":"sfx_001","type":"sfx","path":"assets/sfx/keyboard-typing-soft.mp3","source":"search","description":"keyboard-typing-soft","duration":44.4,"provenance":{"provider":"heygen","prompt":"keyboard-typing-soft"}}
+{"id":"sfx_002","type":"sfx","path":"assets/sfx/whoosh-soft.mp3","source":"search","description":"whoosh-soft","duration":1.6,"provenance":{"provider":"heygen","prompt":"whoosh-soft"}}
+{"id":"sfx_003","type":"sfx","path":"assets/sfx/impact-soft.mp3","source":"search","description":"impact-soft","duration":2.8,"provenance":{"provider":"heygen","prompt":"impact-soft"}}
+{"id":"sfx_004","type":"sfx","path":"assets/sfx/riser-short.mp3","source":"search","description":"riser-short","duration":5,"provenance":{"provider":"heygen","prompt":"riser-short"}}
+{"id":"sfx_005","type":"sfx","path":"assets/sfx/click-soft.mp3","source":"search","description":"click-soft","duration":0.3,"provenance":{"provider":"heygen","prompt":"click-soft"}}

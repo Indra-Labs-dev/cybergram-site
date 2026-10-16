@@ -1,0 +1,50 @@
+<template>
+<div data-hf-id="hf-rk66" id="root" data-composition-id="08-outro" data-start="0" data-duration="2.5" data-width="1920" data-height="1080">
+  <style>
+    @font-face { font-family: "Sora"; src: url("assets/fonts/Sora.woff2") format("woff2"); font-weight: 100 800; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono.woff2") format("woff2"); font-weight: 100 800; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; }
+    #outro08-bg { position: absolute; inset: 0; background: #06090B; }
+    #outro08-stage { position: absolute; inset: 0; container-type: size; }
+    #outro08-lockup { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 960px 420px; }
+    #outro08-mark { position: absolute; left: 416px; top: 332.5px; width: 288px; height: 175px; transform-origin: 50% 50%; }
+    #outro08-mark img { width: 288px; height: 175px; display: block; object-fit: contain; }
+    #outro08-word { position: absolute; left: 760px; top: 325px; font-family: "Sora", sans-serif; font-weight: 800; font-size: 150px; line-height: 190px; letter-spacing: -0.04em; color: #F4F8F7; white-space: nowrap; }
+    #outro08-sig { position: absolute; left: 0; right: 0; top: 560px; text-align: center; font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 30px; letter-spacing: 0.14em; text-transform: uppercase; color: #B7C2BF; }
+    #outro08-cta { position: absolute; left: 560px; top: 680px; width: 800px; height: 120px; transform-origin: 50% 0%; display: flex; align-items: center; justify-content: center; border-radius: 60px; background: #2FE6B8; font-family: "Sora", sans-serif; font-weight: 700; font-size: 46px; letter-spacing: -0.02em; color: #06090B; white-space: nowrap; }
+    #outro08-arrow { margin: 0 0.4em; }
+    #outro08-caret { display: inline-block; width: 4px; height: 52px; margin-left: 8px; background: #06090B; }
+  </style>
+  <div data-hf-id="hf-fvsi" id="outro08-bg" class="clip" data-start="0" data-duration="2.5" data-track-index="0"></div>
+  <div data-hf-id="hf-svu0" id="outro08-stage" class="clip" data-start="0" data-duration="2.5" data-track-index="1">
+    <div data-hf-id="hf-zwjx" id="outro08-lockup">
+      <div data-hf-id="hf-dwuw" id="outro08-mark"><img data-hf-id="hf-4ibe" src="assets/logo-icon.png" alt=""></div>
+      <div data-hf-id="hf-feov" id="outro08-word">CyberGram</div>
+    </div>
+    <div data-hf-id="hf-mquj" id="outro08-sig">Apprendre. Échanger. Explorer.</div>
+    <div data-hf-id="hf-exor" id="outro08-cta"><span data-hf-id="hf-hggy">Être notifié</span><span data-hf-id="hf-g2nr" id="outro08-arrow">→</span><span data-hf-id="hf-8elo">cybergram.dev</span><span data-hf-id="hf-etcp" id="outro08-caret"></span></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+      // Scene 1 (0.0–0.9s): lockup present (matches end of 02), faint mark breath; signature fades in
+      tl.fromTo("#outro08-lockup", { opacity: 0.85 }, { opacity: 1, duration: 0.3, ease: "power1.out" }, 0);
+      tl.fromTo("#outro08-mark", { rotation: -1.5 }, { rotation: 0, duration: 0.9, ease: "sine.inOut" }, 0);
+      tl.fromTo("#outro08-sig", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.25);
+      // Scene 2 (0.9–1.8s): lockup condenses upward; CTA pill scales up from below the mark center, press-scale settle
+      tl.fromTo("#outro08-lockup", { y: 0, scale: 1 }, { y: -110, scale: 0.78, duration: 0.6, ease: "power3.inOut" }, 0.9);
+      tl.fromTo("#outro08-sig", { y: 0 }, { y: -150, duration: 0.6, ease: "power3.inOut", immediateRender: false }, 0.9);
+      tl.fromTo("#outro08-cta", { scale: 0.2, opacity: 0, y: -60 }, { scale: 1, opacity: 1, y: -100, duration: 0.5, ease: "power3.out" }, 1.05);
+      tl.to("#outro08-cta", { scale: 0.95, duration: 0.1, ease: "power2.in" }, 1.58);
+      tl.to("#outro08-cta", { scale: 1, duration: 0.2, ease: "back.out(2.5)" }, 1.68);
+      // Scene 3 (1.8–2.5s): hold; caret blinks once
+      tl.fromTo("#outro08-caret", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 1.85);
+      tl.to("#outro08-caret", { opacity: 0, duration: 0.01 }, 2.15);
+      tl.to("#outro08-caret", { opacity: 1, duration: 0.01 }, 2.35);
+      window.__timelines["08-outro"] = tl;
+    })();
+  </script>
+</div>
+</template>

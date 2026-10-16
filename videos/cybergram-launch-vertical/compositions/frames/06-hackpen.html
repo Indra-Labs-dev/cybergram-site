@@ -1,0 +1,117 @@
+<template>
+  <div data-hf-id="hf-46ge" id="root" data-composition-id="06-hackpen" data-width="1080" data-height="1920" data-start="0" data-duration="5.5">
+    <style>
+      @font-face { font-family: "Sora"; src: url("assets/fonts/Sora.woff2") format("woff2"); font-weight: 100 800; }
+      @font-face { font-family: "Manrope"; src: url("assets/fonts/Manrope.woff2") format("woff2"); font-weight: 200 800; }
+      @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono.woff2") format("woff2"); font-weight: 100 800; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; container-type: size; }
+      .h06-ground { position: absolute; inset: 0; background: #0B0907; }
+      .h06-bg { position: absolute; inset: -60px; background: url("assets/hackpen.png") center / cover no-repeat; opacity: 0.35; filter: blur(10px) saturate(0.7); }
+      .h06-veil { position: absolute; inset: 0; background: rgba(11,9,7,0.55); }
+      .h06-wipe { position: absolute; top: 0; left: 0; width: 1080px; height: 1px; background: #FF9F2E; }
+      .h06-kicker { position: absolute; left: 80px; top: 236px; font: 500 24px/1 "JetBrains Mono", monospace; letter-spacing: 0.14em; text-transform: uppercase; color: #FF9F2E; }
+      .h06-rule { position: absolute; left: 80px; top: 214px; width: 36px; height: 2px; background: #FF9F2E; }
+      .h06-mask { position: absolute; left: 74px; top: 282px; overflow: hidden; padding: 0 6px 10px; }
+      .h06-head { font: 800 88px/1.08 "Sora", sans-serif; letter-spacing: -0.02em; color: #F4F8F7; }
+      .h06-head em { font-style: normal; color: #FF9F2E; }
+      .h06-world { position: absolute; left: 0; top: 0; width: 1080px; height: 2400px; transform-origin: 540px 0; }
+      .h06-win { position: absolute; left: 80px; width: 920px; border: 1px solid #2A1D0E; border-radius: 12px; overflow: hidden; background: #0B0907; }
+      .h06-bar { height: 44px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; border-bottom: 1px solid #2A1D0E; font: 500 18px/1 "JetBrains Mono", monospace; letter-spacing: 0.14em; text-transform: uppercase; }
+      .h06-bar .l { color: #F4F8F7; text-transform: none; letter-spacing: 0.04em; }
+      .h06-bar .r { color: #FF9F2E; }
+      .h06-shot { position: relative; width: 920px; height: 614px; }
+      .h06-shot img { display: block; width: 100%; height: 100%; object-fit: cover; }
+      .h06-path { position: absolute; inset: 0; }
+      .h06-chips { position: absolute; left: 80px; top: 2024px; width: 920px; display: flex; gap: 12px; justify-content: space-between; }
+      .h06-chip { font: 500 22px/1 "JetBrains Mono", monospace; letter-spacing: 0.12em; text-transform: uppercase; color: #F4F8F7; padding: 14px 20px; border: 1px solid #2A1D0E; border-radius: 999px; background: #120D08; }
+      .h06-chip.hot { color: #0B0907; background: #FF9F2E; border-color: #FF9F2E; }
+      .h06-foot { position: absolute; left: 80px; top: 1530px; font: 500 32px/1 "JetBrains Mono", monospace; letter-spacing: 0.02em; color: #B7C2BF; white-space: nowrap; }
+      .h06-foot span { opacity: 0; }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+    <div data-hf-id="hf-o7pe" class="clip h06-ground" data-start="0" data-duration="5.5" data-track-index="0"></div>
+    <div data-hf-id="hf-qf0b" class="clip h06-bg-wrap" data-start="0" data-duration="5.5" data-track-index="1" style="position:absolute;inset:0;">
+      <div data-hf-id="hf-n1r6" class="h06-bg" id="h06-bg"></div>
+      <div data-hf-id="hf-3b23" class="h06-veil"></div>
+    </div>
+
+    <div data-hf-id="hf-jzo5" class="clip h06-world" id="h06-world" data-start="0" data-duration="5.5" data-track-index="2" data-layout-allow-overflow>
+      <div data-hf-id="hf-lhdg" class="h06-win" id="h06-win1" style="top: 560px;">
+        <div data-hf-id="hf-00jq" class="h06-bar"><span data-hf-id="hf-d95d" class="l">hackpen / workflow</span><span data-hf-id="hf-yx19" class="r">DONNÉES DE DÉMONSTRATION</span></div>
+        <div data-hf-id="hf-oc7r" class="h06-shot">
+          <img data-hf-id="hf-0wn8" src="assets/workflow.png" alt="">
+          <svg data-hf-id="hf-j7jb" class="h06-path" viewBox="0 0 920 614" preserveAspectRatio="none">
+            <path data-hf-id="hf-wcof" id="h06-trace" d="M50 360 C 190 360, 220 240, 360 250 S 560 400, 680 315 S 840 230, 880 255" fill="none" stroke="#FF9F2E" stroke-width="3" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+          </svg>
+        </div>
+      </div>
+      <div data-hf-id="hf-yhyg" class="h06-win" id="h06-win2" style="top: 1350px;">
+        <div data-hf-id="hf-570q" class="h06-bar"><span data-hf-id="hf-yypi" class="l">hackpen / findings</span><span data-hf-id="hf-zpap" class="r">DONNÉES DE DÉMONSTRATION</span></div>
+        <div data-hf-id="hf-2dav" class="h06-shot"><img data-hf-id="hf-lofh" src="assets/findings.png" alt=""></div>
+      </div>
+      <div data-hf-id="hf-6rle" class="h06-chips">
+        <span data-hf-id="hf-lh25" class="h06-chip hot">Critique</span>
+        <span data-hf-id="hf-ijbt" class="h06-chip">Élevé</span>
+        <span data-hf-id="hf-95t8" class="h06-chip">Moyen</span>
+        <span data-hf-id="hf-jgp5" class="h06-chip">Faible</span>
+        <span data-hf-id="hf-r244" class="h06-chip">Info</span>
+      </div>
+    </div>
+
+    <div data-hf-id="hf-h28s" class="clip" data-start="0" data-duration="5.5" data-track-index="3" style="position:absolute;inset:0;">
+      <div data-hf-id="hf-uwiq" class="h06-rule" id="h06-rule"></div>
+      <div data-hf-id="hf-klz5" class="h06-kicker" id="h06-kicker">HackPen · pratique encadrée</div>
+      <div data-hf-id="hf-5683" class="h06-mask"><div data-hf-id="hf-pn6u" class="h06-head" id="h06-head">De la veille<br>à la <em data-hf-id="hf-sylq">pratique.</em></div></div>
+      <div data-hf-id="hf-wfvy" class="h06-foot" id="h06-foot"></div>
+      <div data-hf-id="hf-dfv6" class="h06-wipe" id="h06-wipe"></div>
+    </div>
+
+    <script>
+      (function () {
+        var foot = document.getElementById("h06-foot");
+        var txt = "Uniquement sur des périmètres autorisés.";
+        for (var i = 0; i < txt.length; i++) {
+          var s = document.createElement("span");
+          s.textContent = txt[i];
+          foot.appendChild(s);
+        }
+        var tl = gsap.timeline({ paused: true });
+        var world = document.getElementById("h06-world");
+        var cam = { y: 0, s: 1, b: 0 };
+        function applyCamera() {
+          world.style.transform = "translate(0px," + cam.y + "px) scale(" + cam.s + ")";
+          world.style.filter = cam.b > 0.01 ? "blur(" + cam.b + "px)" : "none";
+        }
+        applyCamera();
+
+        // Scene 1 — amber hairline wipe, kicker, headline mask-rise
+        tl.fromTo("#h06-wipe", { y: -10, opacity: 1 }, { y: 1930, duration: 0.6, ease: "power2.inOut" }, 0);
+        tl.fromTo("#h06-rule", { scaleX: 0, transformOrigin: "0 50%" }, { scaleX: 1, duration: 0.35, ease: "power3.out" }, 0.15);
+        tl.fromTo("#h06-kicker", { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.2);
+        tl.fromTo("#h06-head", { yPercent: 110 }, { yPercent: 0, duration: 0.6, ease: "power4.out" }, 0.35);
+        tl.fromTo("#h06-bg", { scale: 1.08, y: 0 }, { scale: 1.0, y: -40, duration: 5, ease: "none" }, 0);
+
+        // Scene 2 — workflow window rises in, camera eases down along it, amber path traces
+        tl.fromTo("#h06-win1", { y: 700, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "power4.out" }, 0.9);
+        tl.to(cam, { y: -60, duration: 1.4, ease: "power2.inOut", onUpdate: applyCamera }, 1.15);
+        tl.to("#h06-trace", { strokeDashoffset: 0, duration: 1.2, ease: "power1.inOut" }, 1.35);
+
+        // Scene 3 — camera travels down to findings window (motion-blur envelope on travel)
+        tl.to("#h06-win1", { opacity: 0, duration: 0.6, ease: "power2.in" }, 2.6);
+        tl.fromTo("#h06-win2", { opacity: 0.4 }, { opacity: 1, duration: 0.6, ease: "none" }, 2.6);
+        tl.to(cam, { y: -830, duration: 1.0, ease: "power2.inOut", onUpdate: applyCamera }, 2.6);
+        tl.to(cam, { b: 5, duration: 0.5, ease: "power2.in", onUpdate: applyCamera }, 2.6);
+        tl.to(cam, { b: 0, duration: 0.5, ease: "power2.out", onUpdate: applyCamera }, 3.1);
+        tl.fromTo(".h06-chip", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(2)", stagger: 0.08 }, 3.35);
+
+        // Scene 4 — footnote types in, slow drift hold
+        tl.to("#h06-foot span", { opacity: 1, duration: 0.01, stagger: 0.018, ease: "none" }, 4.0);
+        tl.to(cam, { y: -846, s: 1.012, duration: 1.4, ease: "none", onUpdate: applyCamera }, 3.6);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines["06-hackpen"] = tl;
+      })();
+    </script>
+  </div>
+</template>

@@ -5,7 +5,7 @@ message: "CyberGram ouvre le 31 octobre 2026 : apprendre, échanger, explorer la
 arc: Feature-Benefit Cascade — hook → product intro → apprendre → échanger → explorer → HackPen → date → brand outro
 audience: Apprenants, professionnels et passionnés de cybersécurité francophones
 mode: autonomous
-music: none
+music: "minimal electronic, dark tech ambient, steady pulse, confident build, no vocals"
 captions: skipped (no narration — on-screen type carries the message)
 ---
 

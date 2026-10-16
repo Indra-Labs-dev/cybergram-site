@@ -1,0 +1,45 @@
+<template>
+  <div data-hf-id="hf-3f43" id="root" data-composition-id="07-date" data-start="0" data-duration="4" data-width="1920" data-height="1080">
+    <style>
+      @font-face { font-family: "Sora"; src: url("assets/fonts/Sora.woff2") format("woff2"); font-weight: 100 800; }
+      @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono.woff2") format("woff2"); font-weight: 100 800; }
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; }
+      .s07-date-bg { position: absolute; inset: 0; background: #06090B; container-type: size; }
+      .sd07-label { position: absolute; left: 0; right: 0; top: 300px; display: flex; justify-content: center; align-items: center; gap: 18px;
+        font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 0.9cqw; letter-spacing: 0.14em; text-transform: uppercase; color: #2FE6B8; }
+      .sd07-dot { width: 12px; height: 12px; border-radius: 50%; background: #2FE6B8; }
+      .sd07-main { position: absolute; left: 0; right: 0; top: 400px; text-align: center;
+        font-family: "Sora", sans-serif; font-weight: 800; font-size: 8cqw; line-height: 1; letter-spacing: -0.04em; color: #F4F8F7; }
+      .sd07-rule { position: absolute; left: 900px; top: 590px; width: 120px; height: 2px; background: #2FE6B8; transform-origin: 50% 50%; }
+      .sd07-url { position: absolute; left: 0; right: 0; top: 650px; text-align: center;
+        font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 1.6cqw; letter-spacing: 0.06em; color: #B7C2BF; }
+    </style>
+    <div data-hf-id="hf-6uip" class="clip s07-date-bg" data-start="0" data-duration="4" data-track-index="0">
+      <div data-hf-id="hf-fe1d" id="d07-label" class="sd07-label"><span data-hf-id="hf-6zqo" id="d07-dot" class="sd07-dot"></span><span data-hf-id="hf-2l7c">Ouverture</span></div>
+      <div data-hf-id="hf-42ib" id="d07-main" class="sd07-main">31 octobre 2026</div>
+      <div data-hf-id="hf-rryp" id="d07-rule" class="sd07-rule"></div>
+      <div data-hf-id="hf-e1ub" id="d07-url" class="sd07-url">app.cybergram.dev</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var tl = gsap.timeline({ paused: true });
+        var q = function (id) { return document.getElementById(id); };
+        // Scene 1: label + pulsing dot
+        tl.fromTo(q("d07-label"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.05);
+        tl.fromTo(q("d07-dot"), { scale: 1, opacity: 1 }, { scale: 1.5, opacity: 0.45, duration: 0.5, ease: "sine.inOut" }, 0.4);
+        tl.to(q("d07-dot"), { scale: 1, opacity: 1, duration: 0.5, ease: "sine.inOut" }, 0.9);
+        tl.to(q("d07-dot"), { scale: 1.5, opacity: 0.45, duration: 0.5, ease: "sine.inOut" }, 1.4);
+        tl.to(q("d07-dot"), { scale: 1, opacity: 1, duration: 0.5, ease: "sine.inOut" }, 1.9);
+        // Scene 2: the one move — date slide-up crossfade + rule draw
+        tl.fromTo(q("d07-main"), { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 1.0);
+        tl.fromTo(q("d07-rule"), { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.inOut" }, 1.5);
+        // Scene 3: url fades in, then stillness
+        tl.fromTo(q("d07-url"), { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 2.2);
+        tl.set({}, {}, 3.5);
+        window.__timelines["07-date"] = tl;
+      })();
+    </script>
+  </div>
+</template>

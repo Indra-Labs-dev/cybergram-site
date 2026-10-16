@@ -1,0 +1,60 @@
+<template>
+<div id="root" data-composition-id="04-echanger" data-start="0" data-duration="3.5" data-width="1080" data-height="1920">
+  <style>
+    @font-face { font-family: "Sora"; src: url("assets/fonts/Sora.woff2") format("woff2"); font-weight: 100 800; }
+    @font-face { font-family: "Manrope"; src: url("assets/fonts/Manrope.woff2") format("woff2"); font-weight: 200 800; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono.woff2") format("woff2"); font-weight: 100 800; }
+    #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; }
+    #echanger-04-bg { position: absolute; inset: 0; background: #06090B; }
+    #echanger-04-cam { position: absolute; inset: 0; transform-origin: 540px 1000px; }
+    .echanger-04-idx { position: absolute; left: 80px; top: 300px; font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 18px; letter-spacing: 0.14em; color: #2FE6B8; }
+    .echanger-04-mask { position: absolute; left: 80px; top: 340px; width: 940px; height: 170px; overflow: hidden; }
+    .echanger-04-verb { font-family: "Sora", sans-serif; font-weight: 700; font-size: 128px; line-height: 1.1; letter-spacing: -0.03em; color: #F4F8F7; white-space: nowrap; }
+    .echanger-04-verb span { color: #2FE6B8; }
+    .echanger-04-benefit { position: absolute; left: 80px; top: 520px; max-width: 920px; font-family: "Manrope", sans-serif; font-size: 40px; line-height: 1.4; color: #B7C2BF; }
+    .echanger-04-win { position: absolute; background: #0A0F11; border: 1px solid #1A2427; border-radius: 12px; overflow: hidden; }
+    .echanger-04-bar { height: 44px; border-bottom: 1px solid #1A2427; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; font-family: "JetBrains Mono", monospace; font-size: 14px; letter-spacing: 0.14em; color: #8A9894; text-transform: uppercase; }
+    .echanger-04-bar b { font-weight: 500; color: #B7C2BF; text-transform: none; letter-spacing: 0.04em; }
+    .echanger-04-shot { position: relative; overflow: hidden; }
+    .echanger-04-shot img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: left top; }
+    #echanger-04-main { left: 60px; top: 700px; width: 960px; }
+    #echanger-04-main .echanger-04-shot { height: 640px; }
+    #echanger-04-events { left: 470px; top: 1140px; width: 560px; box-shadow: 0 24px 60px rgba(0,0,0,0.55); }
+    #echanger-04-events .echanger-04-shot { height: 380px; }
+    #echanger-04-events .echanger-04-bar { height: 36px; font-size: 12px; }
+  </style>
+  <div id="echanger-04-bg" class="clip" data-start="0" data-duration="3.5" data-track-index="0"></div>
+  <div id="echanger-04-cam" class="clip" data-start="0" data-duration="3.5" data-track-index="1">
+    <div class="echanger-04-idx" id="echanger-04-idx">02</div>
+    <div class="echanger-04-mask"><div class="echanger-04-verb" id="echanger-04-verb">Échanger<span>.</span></div></div>
+    <div class="echanger-04-benefit" id="echanger-04-benefit">Discussions, projets, événements et CTF.</div>
+    <div class="echanger-04-win" id="echanger-04-main">
+      <div class="echanger-04-bar"><b>app.cybergram.dev / communauté</b><span>Données de démonstration</span></div>
+      <div class="echanger-04-shot" id="echanger-04-mainshot"><img src="assets/community.png" alt="Module Communauté"></div>
+    </div>
+    <div class="echanger-04-win" id="echanger-04-events">
+      <div class="echanger-04-bar"><b>app.cybergram.dev / événements</b><span>Démo</span></div>
+      <div class="echanger-04-shot"><img src="assets/events.png" alt="Module Événements"></div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script>
+    window.__timelines = window.__timelines || {};
+    (function () {
+      var tl = gsap.timeline({ paused: true });
+      // Scene 1: index + verb mask-rise, main window scan-wipe
+      tl.fromTo("#echanger-04-idx", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 0);
+      tl.fromTo("#echanger-04-verb", { yPercent: 105 }, { yPercent: 0, duration: 0.55, ease: "power3.out" }, 0.05);
+      tl.fromTo("#echanger-04-main", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "none" }, 0.1);
+      tl.fromTo("#echanger-04-mainshot", { clipPath: "inset(0% 0% 100% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.6, ease: "power2.inOut" }, 0.15);
+      // Scene 2: events window slides up, overlaps lower-right
+      tl.fromTo("#echanger-04-events", { opacity: 0, y: 120 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.85);
+      tl.fromTo("#echanger-04-main", { y: 0 }, { y: -10, duration: 0.7, ease: "power2.out" }, 0.85);
+      // Scene 3: benefit line fades up; gentle push across the hold
+      tl.fromTo("#echanger-04-benefit", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 2.0);
+      tl.fromTo("#echanger-04-cam", { scale: 1 }, { scale: 1.02, duration: 3.5, ease: "sine.inOut" }, 0);
+      window.__timelines["04-echanger"] = tl;
+    })();
+  </script>
+</div>
+</template>

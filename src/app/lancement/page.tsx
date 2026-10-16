@@ -5,6 +5,7 @@ import { SITE, launchDateLabel } from "@/lib/site";
 import { BreadcrumbJsonLd } from "@/components/Breadcrumbs";
 import { createPageMetadata } from "@/lib/page-metadata";
 import { Roadmap } from "@/components/Roadmap";
+import { VideoPlayer } from "@/components/VideoTeaser";
 
 export const metadata = createPageMetadata({
   title: "Lancement",
@@ -31,6 +32,12 @@ export default function Page() {
           </>}
           {SITE.appOpen && <a href={SITE.appUrl} className="btn btn--primary" style={{ marginTop: 32 }}>Accéder à CyberGram →</a>}
         </div>
+      </section>
+
+      <section className="container section" aria-labelledby="teaser">
+        <Eyebrow>Teaser</Eyebrow>
+        <h2 id="teaser" className="h2">CyberGram en 30 secondes.</h2>
+        <div style={{ marginTop: 40, maxWidth: 960 }}><VideoPlayer /></div>
       </section>
 
       <section className="container section" aria-labelledby="roadmap">

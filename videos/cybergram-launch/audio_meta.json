@@ -1,0 +1,82 @@
+{
+  "bgm": {
+    "path": "assets/bgm/track-cut.mp3",
+    "volume": 0.9,
+    "query": "minimal electronic, dark tech ambient, steady pulse, confident build, no vocals",
+    "duration_s": 30.5
+  },
+  "bgm_pending": false,
+  "voices": [],
+  "sfx": [
+    {
+      "frame": 1,
+      "file": "assets/sfx/keyboard-typing-soft.mp3",
+      "offset_s": 0,
+      "duration_s": 44.382,
+      "volume": 0.35
+    },
+    {
+      "frame": 2,
+      "file": "assets/sfx/whoosh-soft.mp3",
+      "offset_s": 0,
+      "duration_s": 1.58,
+      "volume": 0.35
+    },
+    {
+      "frame": 2,
+      "file": "assets/sfx/impact-soft.mp3",
+      "offset_s": 0,
+      "duration_s": 2.758,
+      "volume": 0.35
+    },
+    {
+      "frame": 3,
+      "file": "assets/sfx/whoosh-soft.mp3",
+      "offset_s": 0,
+      "duration_s": 1.58,
+      "volume": 0.35
+    },
+    {
+      "frame": 4,
+      "file": "assets/sfx/whoosh-soft.mp3",
+      "offset_s": 0,
+      "duration_s": 1.58,
+      "volume": 0.35
+    },
+    {
+      "frame": 5,
+      "file": "assets/sfx/whoosh-soft.mp3",
+      "offset_s": 0,
+      "duration_s": 1.58,
+      "volume": 0.35
+    },
+    {
+      "frame": 6,
+      "file": "assets/sfx/riser-short.mp3",
+      "offset_s": 0,
+      "duration_s": 4.97,
+      "volume": 0.35
+    },
+    {
+      "frame": 6,
+      "file": "assets/sfx/click-soft.mp3",
+      "offset_s": 0,
+      "duration_s": 0.264,
+      "volume": 0.35
+    },
+    {
+      "frame": 7,
+      "file": "assets/sfx/impact-soft.mp3",
+      "offset_s": 0,
+      "duration_s": 2.758,
+      "volume": 0.35
+    },
+    {
+      "frame": 8,
+      "file": "assets/sfx/click-soft.mp3",
+      "offset_s": 0,
+      "duration_s": 0.264,
+      "volume": 0.35
+    }
+  ]
+}

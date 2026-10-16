@@ -859,6 +859,18 @@ body{overflow-x:clip}
   .logo3d canvas{display:block;width:100%;height:100%}
 }
 
+/* --- Teaser vidéo --- */
+.vplayer{margin:0;border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;background:var(--bg-raise)}
+.vplayer video,.vdialog video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000}
+.vteaser-btn{gap:10px}
+.vteaser-btn__icon{width:0;height:0;border-style:solid;border-width:6px 0 6px 10px;border-color:transparent transparent transparent var(--teal)}
+.vdialog{width:min(1100px,94vw);max-width:none;padding:0;border:1px solid var(--line-strong);border-radius:var(--radius-md);background:var(--bg-raise);color:var(--ink)}
+.vdialog::backdrop{background:rgba(3,5,6,.86);backdrop-filter:blur(4px)}
+.vdialog[open]{animation:success-in 400ms cubic-bezier(.16,1,.3,1) both}
+.vdialog__inner{display:flex;flex-direction:column}
+.vdialog__close{align-self:flex-end;min-height:44px;padding:0 18px;background:none;border:0;color:var(--ink-3);font:500 12px var(--font-mono);letter-spacing:.06em;cursor:pointer}
+.vdialog__close:hover{color:var(--teal)}
+
 /* --- 404 terminal --- */
 .nf{border:1px solid var(--line);border-radius:var(--radius-md);background:var(--bg-raise);overflow:hidden}
 .nf__screen{padding:20px 22px;font:400 14px/1.8 var(--font-mono);color:var(--ink-2);min-height:220px}

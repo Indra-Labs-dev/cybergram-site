@@ -1,0 +1,71 @@
+<template id="03-apprendre-template">
+  <div data-hf-id="hf-6zs4" id="root" data-composition-id="03-apprendre" data-width="1080" data-height="1920" data-duration="3.5">
+    <style>
+      @font-face { font-family: "Sora"; src: url("assets/fonts/Sora.woff2") format("woff2"); font-weight: 100 800; }
+      @font-face { font-family: "Manrope"; src: url("assets/fonts/Manrope.woff2") format("woff2"); font-weight: 200 800; }
+      @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono.woff2") format("woff2"); font-weight: 100 800; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; }
+      #a03-ground { position: absolute; inset: 0; background-color: #06090B;
+        background-image: linear-gradient(#0E1619 1px, transparent 1px), linear-gradient(90deg, #0E1619 1px, transparent 1px);
+        background-size: 80px 80px; background-position: 0 0; }
+      #a03-label { position: absolute; left: 80px; top: 300px; font-family: "JetBrains Mono", monospace; font-weight: 500;
+        font-size: 18px; letter-spacing: 0.14em; color: #2FE6B8; }
+      #a03-verbmask { position: absolute; left: 80px; top: 340px; width: 920px; height: 160px; overflow: hidden; }
+      #a03-verb { position: absolute; left: 0; top: 0; font-family: "Sora", sans-serif; font-weight: 700; font-size: 128px;
+        line-height: 1.1; letter-spacing: -0.04em; color: #F4F8F7; white-space: nowrap; }
+      #a03-verb .a03-dot { color: #2FE6B8; }
+      #a03-benefit { position: absolute; left: 80px; top: 520px; max-width: 920px; font-family: "Manrope", sans-serif;
+        font-weight: 400; font-size: 40px; line-height: 1.4; color: #B7C2BF; }
+      #a03-win { position: absolute; left: 60px; top: 700px; width: 960px; height: 684px; border: 1px solid #1A2427;
+        border-radius: 12px; overflow: hidden; background: #0A0F11; transform-origin: 50% 50%; }
+      #a03-bar { position: absolute; left: 0; top: 0; right: 0; height: 44px; border-bottom: 1px solid #1A2427; display: flex;
+        align-items: center; justify-content: space-between; padding: 0 18px; font-family: "JetBrains Mono", monospace;
+        font-size: 14px; letter-spacing: 0.1em; color: #B7C2BF; background: #0A0F11; z-index: 3; }
+      #a03-bar .a03-tag { color: #5F6D69; letter-spacing: 0.14em; }
+      #a03-screen { position: absolute; left: 0; top: 44px; right: 0; bottom: 0; overflow: hidden; }
+      #a03-shot { position: absolute; inset: 0; clip-path: inset(0 100% 0 0); }
+      #a03-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
+      #a03-scan { position: absolute; top: 0; bottom: 0; left: 0; width: 2px; background: #2FE6B8; z-index: 2; }
+    </style>
+
+    <div data-hf-id="hf-b3ke" id="a03-ground" class="clip" data-start="0" data-duration="3.5" data-track-index="0"></div>
+
+    <div data-hf-id="hf-u7fc" id="a03-win" class="clip" data-start="0" data-duration="3.5" data-track-index="1">
+      <div data-hf-id="hf-bro5" id="a03-bar"><span data-hf-id="hf-nfah">app.cybergram.dev / apprendre</span><span data-hf-id="hf-6e6y" class="a03-tag">DONNÉES DE DÉMONSTRATION</span></div>
+      <div data-hf-id="hf-uo8v" id="a03-screen" data-layout-allow-overflow>
+        <div data-hf-id="hf-90ei" id="a03-shot"><img data-hf-id="hf-qwn5" src="assets/learn.png" alt="" /></div>
+        <div data-hf-id="hf-bcah" id="a03-scan"></div>
+      </div>
+    </div>
+
+    <div data-hf-id="hf-gtbm" id="a03-label" class="clip" data-start="0" data-duration="3.5" data-track-index="2">01</div>
+    <div data-hf-id="hf-knv3" id="a03-verbmask" class="clip" data-start="0" data-duration="3.5" data-track-index="3">
+      <div data-hf-id="hf-839y" id="a03-verb">Apprendre<span data-hf-id="hf-514j" class="a03-dot">.</span></div>
+    </div>
+    <div data-hf-id="hf-5a1x" id="a03-benefit" class="clip" data-start="0" data-duration="3.5" data-track-index="4">Cours et parcours, du débutant à l'avancé.</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var tl = gsap.timeline({ paused: true });
+        // Scene 1 (0.0–0.8): label, verb mask-rise, empty window
+        tl.fromTo("#a03-label", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0);
+        tl.fromTo("#a03-verb", { yPercent: 100 }, { yPercent: 0, duration: 0.6, ease: "expo.out" }, 0.08);
+        tl.fromTo("#a03-win", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out" }, 0);
+        // Scene 2 (0.8–2.0): scan sweep reveals screenshot
+        tl.fromTo("#a03-scan", { x: 0, opacity: 1 }, { x: 958, duration: 1.1, ease: "power2.inOut" }, 0.8);
+        tl.fromTo("#a03-shot", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 1.1, ease: "power2.inOut" }, 0.8);
+        tl.to("#a03-scan", { opacity: 0, duration: 0.15, ease: "none" }, 1.9);
+        // Push-in, 3 depth layers (ground slowest, window, label fastest), 0.8 -> end
+        tl.fromTo("#a03-ground", { scale: 1 }, { scale: 1.015, duration: 2.7, ease: "none" }, 0.8);
+        tl.fromTo("#a03-win", { scale: 1 }, { scale: 1.035, duration: 2.7, ease: "sine.inOut" }, 0.8);
+        tl.fromTo("#a03-label", { y: 0 }, { y: -6, duration: 2.7, ease: "none" }, 0.8);
+        // Scene 3 (2.0–3.5): benefit line
+        tl.fromTo("#a03-benefit", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 2.0);
+        tl.set({}, {}, 3.5);
+        window.__timelines["03-apprendre"] = tl;
+      })();
+    </script>
+  </div>
+</template>

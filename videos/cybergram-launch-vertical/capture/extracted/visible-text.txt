@@ -1,0 +1,9 @@
+CyberGram — La cybersécurité, rendue accessible.
+Apprendre. Échanger. Explorer.
+CyberGram réunit l'apprentissage, la communauté, la veille sur les menaces et HackPen, un environnement de reconnaissance et d'investigation, dans un même écosystème de cybersécurité.
+Apprendre : cours, tutoriels et parcours par niveau, du débutant à l'avancé.
+Échanger : discussions, projets communautaires, événements (conférences, meetups, CTF).
+Explorer : Intelligence (CVE, menaces, acteurs, IOC, rapports) puis HackPen.
+HackPen : passer de la veille à la pratique. Projets, cibles, workflows, findings, rapports. Uniquement sur des périmètres autorisés.
+Ouverture prévue le 31 octobre 2026 sur app.cybergram.dev.
+cybergram.dev — Être notifié du lancement.
