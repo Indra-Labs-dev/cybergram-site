@@ -11,10 +11,7 @@
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page"
   },
-  "routes": [{ "pattern": "cybergram.dev", "custom_domain": true }],
-  // Valeurs non sensibles. Les secrets (DATABASE_URL, BREVO_API_KEY, WAITLIST_ADMIN_TOKEN,
-  // CTF_SECRET) se gèrent avec « wrangler secret put » et survivent aux déploiements.
-  "vars": {
-    "EMAIL_FROM": "noreply@cybergram.dev"
-  }
+  "routes": [{ "pattern": "cybergram.dev", "custom_domain": true }]
+  // Toutes les valeurs (DATABASE_URL, BREVO_API_KEY, EMAIL_FROM, WAITLIST_ADMIN_TOKEN, CTF_SECRET)
+  // sont des secrets : « wrangler secret put NOM ». Ils survivent aux déploiements.
 }
