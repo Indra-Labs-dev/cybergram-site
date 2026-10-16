@@ -8,13 +8,7 @@ interface PageMetadataOptions {
   absoluteTitle?: boolean;
 }
 
-const socialImage = {
-  url: "/images/og-image.png",
-  width: 1200,
-  height: 630,
-  alt: "CyberGram — Apprendre. Échanger. Explorer.",
-};
-
+// Les images de partage viennent des fichiers opengraph-image.tsx (une par page, héritée sinon).
 export function createPageMetadata({ title, description, path, absoluteTitle = false }: PageMetadataOptions): Metadata {
   const socialTitle = absoluteTitle ? title : `${title} · ${SITE.name}`;
 
@@ -29,13 +23,11 @@ export function createPageMetadata({ title, description, path, absoluteTitle = f
       title: socialTitle,
       description,
       url: `${SITE.url}${path}`,
-      images: [socialImage],
     },
     twitter: {
       card: "summary_large_image",
       title: socialTitle,
       description,
-      images: [socialImage.url],
     },
   };
 }

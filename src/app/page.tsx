@@ -8,6 +8,8 @@ import { Hotspots } from "@/components/Hotspots";
 import { Term } from "@/components/Term";
 import { HeroTitle } from "@/components/HeroTitle";
 import { ScrollStory } from "@/components/ScrollStory";
+import { HeroField } from "@/components/HeroField";
+import { Logo3D } from "@/components/Logo3D";
 import { SITE } from "@/lib/site";
 import { FAQ } from "@/lib/content";
 import { createPageMetadata } from "@/lib/page-metadata";
@@ -56,7 +58,9 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
-      <section className="container hero" style={{ paddingTop: "clamp(64px,9vw,88px)" }} aria-labelledby="hero-title">
+      <section className="container hero hero--field" style={{ paddingTop: "clamp(64px,9vw,88px)" }} aria-labelledby="hero-title">
+        <HeroField />
+        <Logo3D />
         <div className="eyebrow eyebrow--muted"><span className="dot" />Plateforme en préparation · cybergram.dev</div>
         <HeroTitle id="hero-title" plain="La cybersécurité," accent="rendue accessible." />
         <Terminal />
