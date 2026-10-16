@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Countdown } from "./Countdown";
 import { WaitlistForm } from "./WaitlistForm";
+import { SITE, launchDateLabel } from "@/lib/site";
 
 export function Eyebrow({ children, tone }: { children: React.ReactNode; tone?: "amber" }) {
   return <div className={`eyebrow${tone ? " eyebrow--" + tone : ""}`}>{children}</div>;
@@ -31,17 +32,16 @@ export function LaunchBlock() {
   return (
     <section className="container section" aria-labelledby="launch-title">
       <div className="launch">
-        <Eyebrow>Compte à rebours & Inscription</Eyebrow>
-        <h2 id="launch-title" className="h2" style={{ maxWidth: "20ch" }}>Lancement officiel dans 7 jours.</h2>
-        <p className="body">L&apos;accès à la plateforme ouvrira sur app.cybergram.dev. Inscrivez-vous pour recevoir votre invitation dès l&apos;ouverture :</p>
-        
-        <div style={{ marginTop: 32 }}>
-          <Countdown />
-        </div>
+        <Eyebrow>{SITE.appOpen ? "Plateforme disponible" : "Compte à rebours & inscription"}</Eyebrow>
+        <h2 id="launch-title" className="h2" style={{ maxWidth: "20ch" }}>{SITE.appOpen ? "CyberGram est ouvert." : `Ouverture prévue le ${launchDateLabel}.`}</h2>
+        <p className="body">{SITE.appOpen ? "La plateforme est accessible dès maintenant." : "Inscrivez-vous pour recevoir un e-mail dès l'ouverture de la plateforme."}</p>
 
-        <div style={{ marginTop: 36, maxWidth: 640 }}>
-          <WaitlistForm />
-        </div>
+        {SITE.appOpen ? (
+          <div className="btn-row" style={{ marginTop: 32 }}><a href={SITE.appUrl} className="btn btn--primary">Accéder à CyberGram →</a></div>
+        ) : <>
+          <div style={{ marginTop: 32 }}><Countdown /></div>
+          <div style={{ marginTop: 36, maxWidth: 640 }}><WaitlistForm /></div>
+        </>}
 
         <div className="btn-row" style={{ marginTop: 32 }}>
           <Link href="/lancement" className="btn btn--ghost">En savoir plus sur le lancement</Link>

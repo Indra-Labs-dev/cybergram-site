@@ -10,6 +10,13 @@ export const SITE = {
   launchDate: "2026-10-23T12:00:00Z",
 } as const;
 
+export const launchDateLabel = new Intl.DateTimeFormat("fr-FR", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+  timeZone: "Africa/Abidjan",
+}).format(new Date(SITE.launchDate));
+
 export const NAV = [
   { href: "/ecosysteme", label: "Écosystème" },
   { href: "/fonctionnalites", label: "Fonctionnalités" },

@@ -42,11 +42,20 @@ export function Countdown({ targetDate = SITE.launchDate }: { targetDate?: strin
     { label: "Secondes", value: String(timeLeft.seconds).padStart(2, "0") },
   ];
 
+  if (SITE.appOpen) {
+    return (
+      <div className="countdown-ready" role="status">
+        <span className="dot dot--ready" />
+        <span>CyberGram est ouvert sur <a href={SITE.appUrl}><strong>{SITE.appUrl}</strong></a>.</span>
+      </div>
+    );
+  }
+
   if (timeLeft.isReady) {
     return (
       <div className="countdown-ready" role="status">
         <span className="dot dot--ready" />
-        <span>Le lancement est en cours sur <strong>{SITE.appUrl}</strong></span>
+        <span>{SITE.appOpen ? <>CyberGram est ouvert sur <strong>{SITE.appUrl}</strong>.</> : "La date d'ouverture prévue est passée. Consultez cette page pour connaître la nouvelle date."}</span>
       </div>
     );
   }
@@ -55,7 +64,6 @@ export function Countdown({ targetDate = SITE.launchDate }: { targetDate?: strin
     <div
       className="countdown"
       role="timer"
-      aria-live="polite"
       aria-label={`Compte à rebours avant le lancement : ${timeLeft.days} jours, ${timeLeft.hours} heures, ${timeLeft.minutes} minutes et ${timeLeft.seconds} secondes`}
     >
       {units.map((unit) => (

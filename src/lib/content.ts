@@ -37,8 +37,8 @@ export const AUDIENCES = [
 
 export const FAQ = [
   { q: "Qu'est-ce que CyberGram ?", a: "Une plateforme de cybersécurité qui réunit apprentissage, communauté, veille sur les menaces et un environnement de pratique, HackPen." },
-  { q: "Quand l'application sera-t-elle disponible ?", a: "L'application est en préparation. La date d'ouverture sera annoncée sur cybergram.dev." },
-  { q: "Puis-je m'inscrire dès maintenant ?", a: "Non. Aucune inscription n'est collectée avant l'ouverture officielle." },
+  { q: "Quand l'application sera-t-elle disponible ?", a: "La date d'ouverture prévue est affichée sur la page Lancement. Elle sera mise à jour si le calendrier change." },
+  { q: "Puis-je m'inscrire dès maintenant ?", a: "Oui. Inscrivez-vous sur la page Lancement pour recevoir un e-mail lorsque l'application ouvrira." },
   { q: "Quelle est la différence entre CyberGram et HackPen ?", a: "CyberGram est la plateforme principale : apprentissage, communauté, intelligence. HackPen est l'environnement de pratique intégré, dédié à la reconnaissance et à l'investigation." },
   { q: "Quels seront les tarifs ?", a: "Les modalités d'accès et les éventuelles offres seront communiquées au lancement." },
 ] as const;

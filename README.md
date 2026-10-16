@@ -30,9 +30,12 @@ npm run check        # lint + typecheck + build + test
 Workers & Pages → cybergram-site → Settings → Domains & Routes → Add Custom Domain → `cybergram.dev` (et `www.cybergram.dev` avec redirection vers l'apex via une règle de redirection). Ne pas lier `app.` ni `api.` à ce Worker.
 
 ### Variables d'environnement
-- Le site statique n'en utilise pas côté navigateur. Le Worker nécessite le secret `DATABASE_URL` (URL Neon poolée) : `npx wrangler secret put DATABASE_URL`.
-- En local, définir `DATABASE_URL` dans `.dev.vars` pour `wrangler dev` (ne jamais committer ce fichier).
-- Le schéma est défini dans `migrations/001_launch_waitlist.sql` ; la table `launch_waitlist` stocke les adresses et leur date d'inscription. L'inscription passe par `POST /api/waitlist`.
+- Le site statique n'en utilise pas côté navigateur. Le Worker nécessite `DATABASE_URL` (URL Neon poolée), `BREVO_API_KEY`, `EMAIL_FROM` (adresse d'expéditeur vérifiée chez Brevo) et `WAITLIST_ADMIN_TOKEN` (secret long aléatoire). `EMAIL_FROM_NAME` est facultatif. Configurer chaque valeur avec `npx wrangler secret put NOM`.
+- En local, définir ces valeurs dans `.dev.vars` pour `wrangler dev` (fichier ignoré par Git, ne jamais le committer).
+- Les migrations `migrations/001_launch_waitlist.sql` et `migrations/002_waitlist_notifications.sql` créent la liste, les jetons de désinscription et les états d'envoi. L'inscription passe par `POST /api/waitlist`.
+- Au lancement, appeler `POST /api/notify-launch` avec `Authorization: Bearer <WAITLIST_ADMIN_TOKEN>`. L'endpoint envoie jusqu'à 50 e-mails par appel via l'API transactionnelle Brevo, exclut les désinscrits et marque les messages acceptés par Brevo pour éviter les renvois. Répéter jusqu'à ce que `remaining` soit `false`.
+- Avant cet envoi, passer `appOpen` à `true` dans `src/lib/site.ts` et redéployer ; l'API refuse d'envoyer tant que la plateforme n'est pas marquée ouverte.
+- Chaque notification contient un lien de désinscription (`GET /api/unsubscribe?token=...`).
 
 ## Fichiers Cloudflare
 - `wrangler.jsonc` et `src/worker.ts` : API de liste d'attente et assets statiques, 404 servie depuis `out/404.html`.
