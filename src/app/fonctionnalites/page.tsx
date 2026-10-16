@@ -1,5 +1,5 @@
 import { PageHead, LaunchBlock } from "@/components/ui";
-import { Modules } from "@/components/Modules";
+import { StickyModules } from "@/components/StickyModules";
 import { BreadcrumbJsonLd } from "@/components/Breadcrumbs";
 import { createPageMetadata } from "@/lib/page-metadata";
 
@@ -14,7 +14,7 @@ export default function Page() {
     <>
       <BreadcrumbJsonLd items={[{ name: "Fonctionnalités", href: "/fonctionnalites" }]} />
       <PageHead eyebrow="Fonctionnalités" title="Les modules de CyberGram." lead="Chaque module est présenté à partir de son interface conçue. Aucun n'est encore ouvert au public : leur disponibilité sera confirmée au lancement." />
-      <section className="container"><Modules /></section>
+      <section className="container"><StickyModules /></section>
       <LaunchBlock />
     </>
   );

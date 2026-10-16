@@ -10,6 +10,7 @@ const ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.S
   { path: "/hackpen", priority: 0.8, changeFrequency: "monthly" },
   { path: "/a-propos", priority: 0.7, changeFrequency: "monthly" },
   { path: "/lancement", priority: 0.8, changeFrequency: "weekly" },
+  { path: "/glossaire", priority: 0.6, changeFrequency: "monthly" },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

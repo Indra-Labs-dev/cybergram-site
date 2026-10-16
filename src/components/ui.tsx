@@ -7,12 +7,13 @@ export function Eyebrow({ children, tone }: { children: React.ReactNode; tone?: 
   return <div className={`eyebrow${tone ? " eyebrow--" + tone : ""}`}>{children}</div>;
 }
 
-export function Shot({ src, alt, bar, caption = "Capture d'interface · données de démonstration", priority }: { src: string; alt: string; bar?: string; caption?: string | null; priority?: boolean }) {
+export function Shot({ src, alt, bar, caption = "Capture d'interface · données de démonstration", priority, children }: { src: string; alt: string; bar?: string; caption?: string | null; priority?: boolean; children?: React.ReactNode }) {
   return (
     <figure className="shot">
       {bar && <div className="shot__bar"><span>{bar}</span><span>Données de démonstration</span></div>}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} width={1536} height={1024} loading={priority ? "eager" : "lazy"} decoding="async" />
+      {children}
       {!bar && caption && <figcaption className="shot__cap">{caption}</figcaption>}
     </figure>
   );
@@ -20,7 +21,7 @@ export function Shot({ src, alt, bar, caption = "Capture d'interface · données
 
 export function PageHead({ eyebrow, title, lead }: { eyebrow: string; title: React.ReactNode; lead?: string }) {
   return (
-    <section className="container" style={{ paddingTop: "clamp(64px,9vw,112px)" }}>
+    <section className="container hero" style={{ paddingTop: "clamp(64px,9vw,112px)" }}>
       <Eyebrow>{eyebrow}</Eyebrow>
       <h1 className="h1" style={{ marginTop: 24, fontSize: "clamp(40px,6vw,80px)", maxWidth: "16ch" }}>{title}</h1>
       {lead && <p className="lead" style={{ marginTop: 28 }}>{lead}</p>}

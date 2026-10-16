@@ -15,6 +15,7 @@ export function Footer() {
         <nav aria-label="Navigation secondaire">
           {NAV.map((n) => <Link key={n.href} href={n.href}>{n.label}</Link>)}
           <Link href="/lancement">Lancement</Link>
+          <Link href="/glossaire">Glossaire</Link>
         </nav>
         <nav aria-label="Informations légales">
           {LEGAL.map((n) => <Link key={n.href} href={n.href}>{n.label}</Link>)}

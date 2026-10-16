@@ -18,11 +18,19 @@ Voir `src/app/globals.css` (`:root`).
 - Typo : Sora (titres, 500/600), Manrope (texte), JetBrains Mono (labels, métadonnées).
 - Échelle : h1 clamp(44→96), h2 clamp(32→52), h3 28, lead 17→19, body 16–17, note 14, label 12.
 - Espacement : sections clamp(88→140px), gouttière 24px, conteneur 1240px.
-- Formes : rayons 8 / 12 / 16 px, bordures 1px, pas d'ombres.
+- Formes : rayons 8 / 12 / 16 px, bordures 1px. Ombres uniquement au survol, très diffuses (≤ 10 % d'opacité) ; jamais d'ombre ni de lueur permanente.
 - Boutons : `.btn--primary` (teal plein), `.btn--ghost` (contour). Hauteur 52px (40px compact). Zones tactiles ≥ 44px.
 - États : hover éclairci, `:focus-visible` contour teal 2px.
-- Mouvement : transitions 160ms ; désactivées sous `prefers-reduced-motion`.
+- Mouvement : le mouvement explique (enchaînement, état, progression), il ne décore pas. Tout est coupé sous `prefers-reduced-motion`.
+  - Micro-interactions : 160–300 ms. Révélations : 600 ms, `cubic-bezier(.16,1,.3,1)`, décalage 50–160 ms entre éléments.
+  - Révélation au défilement : `<AnimateOnScroll>` pose `data-reveal`, `RevealObserver` (layout) ajoute `.is-in`. Seuil 0 : un bloc très haut se révèle quand même. Envelopper des unités (un module, une grille), pas une section entière.
+  - Liées au défilement (`animation-timeline: view()`, amélioration progressive) : tracé du pipeline HackPen, bande ambre qui s'éclaire.
+  - Boucles infinies tolérées seulement pour un signal d'état : point « en préparation », curseur du terminal, repères de capture.
+  - Transitions de page : fondu court via `<ViewTransition>` (navigateurs compatibles).
+  - Lueur sous le pointeur (`AmbientGlow`) : seule exception « halo », ≤ 7 % d'opacité, masquée sous reduced-motion.
 - Iconographie : aucune icône décorative ; numérotation mono (01, 02…) et tirets.
 
 ## Composants
-`Header`, `Footer`, `Eyebrow`, `Shot`, `PageHead`, `LaunchBlock`, `Pillars`, `Modules`, `HackPenBand`, `Audiences`, `Faq`.
+`Header`, `Footer`, `Eyebrow`, `Shot` (accepte des enfants, ex. `Hotspots`), `PageHead`, `LaunchBlock`, `Pillars`, `Modules`, `StickyModules`, `HackPenBand` (pipeline), `HackPenDemo`, `Roadmap`, `Terminal`, `Audiences`, `Faq`.
+
+Contenus d'exemple : toujours fictifs ou publics et vérifiables (domaine `demo.example`, CVE réelle), et signalés comme tels.

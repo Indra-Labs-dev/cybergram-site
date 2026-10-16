@@ -7,7 +7,7 @@ export const SITE = {
     "CyberGram réunit l'apprentissage, la communauté, la veille sur les menaces et HackPen, un environnement de reconnaissance et d'investigation, dans un même écosystème de cybersécurité.",
   contactEmail: "contact@cybergram.dev",
   appOpen: false,
-  launchDate: "2026-10-23T12:00:00Z",
+  launchDate: "2026-10-31T23:59:00Z",
 } as const;
 
 export const launchDateLabel = new Intl.DateTimeFormat("fr-FR", {

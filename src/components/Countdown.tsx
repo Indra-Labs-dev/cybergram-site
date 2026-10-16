@@ -64,11 +64,12 @@ export function Countdown({ targetDate = SITE.launchDate }: { targetDate?: strin
     <div
       className="countdown"
       role="timer"
+      suppressHydrationWarning
       aria-label={`Compte à rebours avant le lancement : ${timeLeft.days} jours, ${timeLeft.hours} heures, ${timeLeft.minutes} minutes et ${timeLeft.seconds} secondes`}
     >
       {units.map((unit) => (
         <div key={unit.label} className="countdown__item">
-          <span className="countdown__val" key={unit.value}>
+          <span className="countdown__val" key={unit.value} suppressHydrationWarning>
             {unit.value}
           </span>
           <span className="countdown__lbl">{unit.label}</span>

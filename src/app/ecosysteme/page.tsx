@@ -3,6 +3,7 @@ import { PageHead, Eyebrow, Shot, LaunchBlock } from "@/components/ui";
 import { Pillars } from "@/components/Sections";
 import { BreadcrumbJsonLd } from "@/components/Breadcrumbs";
 import { createPageMetadata } from "@/lib/page-metadata";
+import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 
 export const metadata = createPageMetadata({
   title: "Écosystème",
@@ -38,6 +39,22 @@ export default function Page() {
           </div>
           <Shot src="/images/intelligence.png" alt="Capture du module Intelligence de CyberGram" />
         </div>
+      </section>
+      <section className="container section" aria-labelledby="exemple">
+        <Eyebrow>Exemple</Eyebrow>
+        <h2 id="exemple" className="h2">Une fiche Intelligence, en clair.</h2>
+        <p className="body" style={{ marginTop: 20 }}>Comment une vulnérabilité publique réelle serait présentée : l&apos;essentiel d&apos;abord, le vocabulaire expliqué.</p>
+        <AnimateOnScroll as="article" className="cve" aria-labelledby="cve-id">
+          <header className="cve__head"><span id="cve-id" className="cve__id">CVE-2021-44228</span><span className="cve__sev">Critique · CVSS 10.0</span></header>
+          <dl className="cve__grid">
+            <div><dt>Nom courant</dt><dd>Log4Shell</dd></div>
+            <div><dt>Composant</dt><dd>Apache Log4j 2, bibliothèque de journalisation Java</dd></div>
+            <div><dt>En une phrase</dt><dd>Un texte écrit dans un journal pouvait pousser le serveur à télécharger et exécuter du code distant.</dd></div>
+            <div><dt>Pourquoi c&apos;est grave</dt><dd>Log4j est présent dans un très grand nombre d&apos;applications, et l&apos;exploitation ne demandait aucune authentification.</dd></div>
+            <div><dt>Correctif</dt><dd>Mettre à jour Log4j (versions 2.17.1 et suivantes pour Java 8).</dd></div>
+            <div><dt>Pour aller plus loin</dt><dd><Link href="/glossaire#cve">CVE</Link>, <Link href="/glossaire#cvss">CVSS</Link>, <Link href="/glossaire#ioc">IOC</Link> dans le glossaire</dd></div>
+          </dl>
+        </AnimateOnScroll>
       </section>
       <LaunchBlock />
     </>

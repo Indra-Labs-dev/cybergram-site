@@ -4,6 +4,8 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { TopBar } from "@/components/TopBar";
 import { AmbientGlow } from "@/components/AmbientGlow";
+import { RevealObserver } from "@/components/RevealObserver";
+import { PageTransition } from "@/components/PageTransition";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
@@ -59,12 +61,17 @@ export const viewport: Viewport = { themeColor: "#06090B", colorScheme: "dark" }
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className={`${sora.variable} ${manrope.variable} ${mono.variable}`}>
+      <head>
+        {/* Sans JS, les blocs à révéler restent visibles. */}
+        <noscript><style>{"[data-reveal],[data-reveal]>*{opacity:1!important;transform:none!important;filter:none!important}"}</style></noscript>
+      </head>
       <body>
         <a className="skip" href="#contenu">Aller au contenu</a>
         <TopBar />
         <AmbientGlow />
         <Header />
-        <main id="contenu">{children}</main>
+        <PageTransition><main id="contenu">{children}</main></PageTransition>
+        <RevealObserver />
         <Footer />
       </body>
     </html>

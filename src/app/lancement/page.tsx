@@ -4,6 +4,7 @@ import { WaitlistForm } from "@/components/WaitlistForm";
 import { SITE, launchDateLabel } from "@/lib/site";
 import { BreadcrumbJsonLd } from "@/components/Breadcrumbs";
 import { createPageMetadata } from "@/lib/page-metadata";
+import { Roadmap } from "@/components/Roadmap";
 
 export const metadata = createPageMetadata({
   title: "Lancement",
@@ -30,6 +31,13 @@ export default function Page() {
           </>}
           {SITE.appOpen && <a href={SITE.appUrl} className="btn btn--primary" style={{ marginTop: 32 }}>Accéder à CyberGram →</a>}
         </div>
+      </section>
+
+      <section className="container section" aria-labelledby="roadmap">
+        <Eyebrow>Feuille de route</Eyebrow>
+        <h2 id="roadmap" className="h2">Où en est chaque chantier.</h2>
+        <p className="note" style={{ marginTop: 20 }}>Mise à jour à chaque étape. Les éléments « après le lancement » n&apos;ont pas encore de date.</p>
+        <Roadmap />
       </section>
 
       <section className="container section prose" style={{ paddingTop: 56 }}>

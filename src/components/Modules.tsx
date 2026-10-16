@@ -1,12 +1,13 @@
 import { MODULES } from "@/lib/content";
 import { Shot } from "./ui";
 import { CopyAnchor } from "./CopyAnchor";
+import { AnimateOnScroll } from "./AnimateOnScroll";
 
 export function Modules() {
   return (
     <div>
       {MODULES.map((m) => (
-        <article className="module" id={m.id} key={m.id} aria-labelledby={`m-${m.id}`}>
+        <AnimateOnScroll as="article" className="module" id={m.id} key={m.id} aria-labelledby={`m-${m.id}`}>
           <div>
             <ul className="chips"><li className="chip chip--status">Interface conçue · ouverture au lancement</li></ul>
             <div className="module__title-row" style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 20 }}>
@@ -17,7 +18,7 @@ export function Modules() {
             <ul className="ticks">{m.points.map((p) => <li key={p}>{p}</li>)}</ul>
           </div>
           <Shot src={m.img} alt={m.alt} />
-        </article>
+        </AnimateOnScroll>
       ))}
     </div>
   );
