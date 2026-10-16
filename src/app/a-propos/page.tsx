@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageHead, Eyebrow, LaunchBlock } from "@/components/ui";
+import { BreadcrumbJsonLd } from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "À propos",
@@ -18,6 +19,7 @@ const PRINCIPLES = [
 export default function Page() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "À propos", href: "/a-propos" }]} />
       <PageHead eyebrow="À propos" title="La cybersécurité, rendue accessible." lead="CyberGram part d'un constat simple : apprendre la cybersécurité oblige souvent à jongler entre cours, forums, flux de veille et outils séparés. La plateforme les réunit dans un même espace." />
       <section className="container section" aria-labelledby="principes">
         <Eyebrow>Approche</Eyebrow>

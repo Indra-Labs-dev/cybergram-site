@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageHead, Eyebrow } from "@/components/ui";
 import { SITE } from "@/lib/site";
+import { BreadcrumbJsonLd } from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Lancement",
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "Lancement", href: "/lancement" }]} />
       <PageHead eyebrow="Lancement" title="L'application est en préparation." lead="CyberGram ouvrira sur app.cybergram.dev. La date et les modalités d'accès seront publiées sur cette page." />
       <section className="container section prose" style={{ paddingTop: 72 }}>
         <Eyebrow>Statut</Eyebrow>

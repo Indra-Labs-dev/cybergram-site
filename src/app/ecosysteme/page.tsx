@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHead, Eyebrow, Shot, LaunchBlock } from "@/components/ui";
 import { Pillars } from "@/components/Sections";
+import { BreadcrumbJsonLd } from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Écosystème",
@@ -20,6 +21,7 @@ const PARTS = [
 export default function Page() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "Écosystème", href: "/ecosysteme" }]} />
       <PageHead eyebrow="Écosystème" title="Un parcours continu, de la lecture à la pratique." lead="CyberGram est organisé autour de trois verbes. Chaque composant a un rôle précis et renvoie vers les autres." />
       <section className="container section" style={{ paddingTop: 72 }}><Pillars /></section>
       <section className="container section" aria-labelledby="parts">

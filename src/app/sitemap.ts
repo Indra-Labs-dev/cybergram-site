@@ -3,8 +3,20 @@ import { SITE } from "@/lib/site";
 
 export const dynamic = "force-static";
 
-const ROUTES = ["", "/ecosysteme", "/fonctionnalites", "/hackpen", "/a-propos", "/lancement"];
+const ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[0]["changeFrequency"] }[] = [
+  { path: "", priority: 1.0, changeFrequency: "weekly" },
+  { path: "/ecosysteme", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/fonctionnalites", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/hackpen", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/a-propos", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/lancement", priority: 0.8, changeFrequency: "weekly" },
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return ROUTES.map((r) => ({ url: SITE.url + r, changeFrequency: "monthly", priority: r === "" ? 1 : 0.7 }));
+  return ROUTES.map((r) => ({
+    url: SITE.url + r.path,
+    lastModified: new Date(),
+    changeFrequency: r.changeFrequency,
+    priority: r.priority,
+  }));
 }

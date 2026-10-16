@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageHead, Eyebrow, Shot, LaunchBlock } from "@/components/ui";
 import { HackPenBand } from "@/components/Sections";
+import { BreadcrumbJsonLd } from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "HackPen",
@@ -18,6 +19,7 @@ const VIEWS = [
 export default function Page() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "HackPen", href: "/hackpen" }]} />
       <PageHead eyebrow="HackPen · composant de l'écosystème" title="Un environnement pour la pratique encadrée." lead="HackPen est l'espace de reconnaissance et d'investigation intégré à CyberGram. Il structure une mission autour de projets, de cibles et de workflows." />
       <HackPenBand />
       <section className="container section" aria-labelledby="views">

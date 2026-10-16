@@ -6,8 +6,16 @@ import { NAV } from "@/lib/site";
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [prevPath, setPrevPath] = useState("");
   const path = usePathname();
-  useEffect(() => setOpen(false), [path]);
+
+  if (path !== prevPath) {
+    setPrevPath(path);
+    if (open) {
+      setOpen(false);
+    }
+  }
+
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);

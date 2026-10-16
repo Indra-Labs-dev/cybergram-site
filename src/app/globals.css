@@ -122,4 +122,190 @@ p{margin:0;text-wrap:pretty}
 .footer nav a:hover{color:#fff}
 .footer__tag{margin-top:16px;font:400 12px var(--font-mono);letter-spacing:.12em;color:var(--ink-4)}
 .footer__base{padding-block:20px 32px;border-top:1px solid #141C1F;font:400 12px var(--font-mono);color:var(--ink-5)}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+/* ====================== */
+/* ANIMATIONS & MOTION    */
+/* ====================== */
+
+/* --- Hero entry animation --- */
+@keyframes hero-text-in{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes hero-fade-in{
+  from{opacity:0}
+  to{opacity:1}
+}
+@keyframes hero-scale-in{
+  from{opacity:0;transform:scale(0.92) translateY(24px)}
+  to{opacity:1;transform:scale(1) translateY(0)}
+}
+.h1{animation:hero-text-in 900ms cubic-bezier(0.16,1,0.3,1) 100ms both}
+.lead{animation:hero-fade-in 800ms cubic-bezier(0.16,1,0.3,1) 400ms both}
+.btn-row{animation:hero-fade-in 800ms cubic-bezier(0.16,1,0.3,1) 600ms both}
+
+/* --- Dot pulse --- */
+@keyframes pulse{
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:.6;transform:scale(1.5)}
+}
+.dot{animation:pulse 2.4s cubic-bezier(.4,0,.6,1) infinite}
+
+/* --- Accent shimmer gradient --- */
+@keyframes shimmer{
+  0%{background-position:200% center}
+  100%{background-position:-200% center}
+}
+.accent{
+  background:linear-gradient(90deg,var(--teal),var(--teal-hi),var(--teal));
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:shimmer 6s linear infinite;
+}
+
+/* --- Card hover lift --- */
+.cell{transition:transform 360ms cubic-bezier(.2,.7,.2,1),box-shadow 360ms cubic-bezier(.2,.7,.2,1),border-color 360ms cubic-bezier(.2,.7,.2,1)}
+.cell:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(47,230,184,.06)}
+
+/* --- Shot hover effect --- */
+.shot{transition:transform 400ms cubic-bezier(.2,.7,.2,1),box-shadow 400ms cubic-bezier(.2,.7,.2,1),border-color 400ms cubic-bezier(.2,.7,.2,1)}
+.shot:hover{transform:translateY(-2px);box-shadow:0 16px 48px rgba(0,0,0,.3);border-color:var(--line-strong)}
+
+/* --- Row/pillar entrance hover --- */
+.row{transition:background 300ms var(--t-fast)}
+.row:hover{background:rgba(47,230,184,.02)}
+
+/* --- Module block hover --- */
+.module{transition:background 300ms ease}
+.module:hover{background:rgba(255,255,255,.01)}
+
+/* --- Enhanced button effects --- */
+.btn{position:relative;overflow:hidden}
+.btn::after{content:"";position:absolute;inset:0;opacity:0;transition:opacity 300ms ease}
+.btn--primary::after{background:linear-gradient(135deg,rgba(255,255,255,.12),transparent)}
+.btn--primary:hover::after{opacity:1}
+.btn--ghost{transition:background var(--t-fast),border-color var(--t-fast),color var(--t-fast),box-shadow var(--t-fast)}
+.btn--ghost:hover{box-shadow:0 0 20px rgba(47,230,184,.1)}
+
+/* --- Chip subtle hover --- */
+.chip{transition:border-color 200ms ease,color 200ms ease,background 200ms ease}
+.chip:hover{border-color:var(--teal);color:var(--ink);background:rgba(47,230,184,.05)}
+
+/* --- FAQ accordion motion --- */
+.faq details p{
+  overflow:hidden;
+  animation:faq-open 300ms cubic-bezier(.2,.7,.2,1) both;
+}
+@keyframes faq-open{
+  from{opacity:0;transform:translateY(-8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.faq summary{transition:color 200ms ease}
+.faq summary:hover{color:var(--teal)}
+.faq summary::after{transition:transform 300ms cubic-bezier(.2,.7,.2,1),color 200ms ease}
+.faq details[open] summary::after{transform:rotate(45deg)}
+
+/* --- Step number counting feel --- */
+.steps .n{transition:color 200ms ease}
+.steps li{transition:background 300ms ease,transform 300ms ease}
+.steps li:hover{background:rgba(255,159,46,.04);transform:translateX(4px)}
+
+/* --- Ticks list stagger entry --- */
+.ticks li{transition:background 200ms ease,padding-left 200ms ease}
+.ticks li:hover{background:rgba(47,230,184,.03);padding-left:8px}
+.ticks li::before{transition:color 200ms ease,transform 200ms ease}
+.ticks li:hover::before{color:var(--teal-hi);transform:translateX(4px)}
+
+/* --- Eyebrow line draw --- */
+@keyframes line-draw{
+  from{width:0}
+  to{width:24px}
+}
+.eyebrow{display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";display:block;width:24px;height:1px;background:currentColor;animation:line-draw 600ms cubic-bezier(.2,.7,.2,1) 300ms both}
+.eyebrow--muted::before{display:none}
+
+/* --- Launch block glow --- */
+@keyframes glow-pulse{
+  0%,100%{box-shadow:0 0 0 rgba(47,230,184,0)}
+  50%{box-shadow:0 0 60px rgba(47,230,184,.08)}
+}
+.launch{animation:glow-pulse 4s ease-in-out infinite}
+
+/* --- Logo hover --- */
+.logo{transition:opacity 200ms ease}
+.logo:hover{opacity:.8}
+
+/* --- Header slide down on load --- */
+@keyframes header-in{
+  from{transform:translateY(-100%);opacity:0}
+  to{transform:translateY(0);opacity:1}
+}
+.header{animation:header-in 500ms cubic-bezier(.2,.7,.2,1) both}
+
+/* --- Footer fade in --- */
+@keyframes footer-in{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.footer{animation:footer-in 600ms cubic-bezier(.2,.7,.2,1) both}
+
+/* --- Grid cells stagger (nth-child delays) --- */
+.grid-cells .cell:nth-child(1){animation:hero-fade-in 500ms 100ms both}
+.grid-cells .cell:nth-child(2){animation:hero-fade-in 500ms 200ms both}
+.grid-cells .cell:nth-child(3){animation:hero-fade-in 500ms 300ms both}
+.grid-cells .cell:nth-child(4){animation:hero-fade-in 500ms 400ms both}
+
+/* --- Row verb color shift on hover --- */
+.row__verb{transition:letter-spacing 300ms ease}
+.row:hover .row__verb{letter-spacing:0}
+
+/* --- Mobile nav slide --- */
+@keyframes slide-down{
+  from{opacity:0;transform:translateY(-12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.mobile-nav{animation:slide-down 250ms cubic-bezier(.2,.7,.2,1) both}
+.mobile-nav a{animation:hero-fade-in 300ms ease both}
+.mobile-nav a:nth-child(1){animation-delay:50ms}
+.mobile-nav a:nth-child(2){animation-delay:100ms}
+.mobile-nav a:nth-child(3){animation-delay:150ms}
+.mobile-nav a:nth-child(4){animation-delay:200ms}
+.mobile-nav a:nth-child(5){animation-delay:250ms}
+.mobile-nav a:nth-child(6){animation-delay:300ms}
+
+/* --- Nav links underline on hover --- */
+.nav a{position:relative}
+.nav a::after{content:"";position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--teal);transition:width 300ms cubic-bezier(.2,.7,.2,1)}
+.nav a:hover::after,.nav a[aria-current="page"]::after{width:100%}
+
+/* --- Band amber entrance --- */
+@keyframes band-reveal{
+  from{opacity:0;clip-path:inset(0 0 100% 0)}
+  to{opacity:1;clip-path:inset(0)}
+}
+
+/* --- Smooth scroll indicator --- */
+@keyframes scroll-hint{
+  0%,100%{opacity:.3;transform:translateY(0)}
+  50%{opacity:.8;transform:translateY(8px)}
+}
+
+/* --- Focus glow --- */
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:4px;box-shadow:0 0 12px rgba(47,230,184,.2)}
+
+/* --- HackPen brand specific --- */
+.band-amber .shot{transition:transform 400ms cubic-bezier(.2,.7,.2,1),box-shadow 400ms cubic-bezier(.2,.7,.2,1)}
+.band-amber .shot:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(255,159,46,.1)}
+
+/* --- Counter number animation --- */
+.row__n{transition:transform 300ms ease,color 300ms ease}
+.row:hover .row__n{transform:scale(1.1);color:var(--ink-3)}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+  .accent{background:none;-webkit-background-clip:unset;background-clip:unset;-webkit-text-fill-color:var(--teal);color:var(--teal)}
+}
