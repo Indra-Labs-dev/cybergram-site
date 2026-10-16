@@ -12,3 +12,12 @@ next-env.d.ts
 CyberGram/
 # Claude Code
 .claude/
+
+# Vidéos HyperFrames : sources versionnées, rendus et caches exclus
+videos/*/node_modules/
+videos/*/renders/
+videos/*/.hyperframes/artifacts/
+videos/*/.media/cache/
+videos/*/.thumbnails/
+videos/*/.hyperframes/preview/
+videos/*/capture/assets/

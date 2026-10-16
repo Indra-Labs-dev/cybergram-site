@@ -1,0 +1,71 @@
+<template>
+<div data-hf-id="hf-i83f" id="root" data-composition-id="05-explorer" data-width="1920" data-height="1080" data-start="0" data-duration="4.1">
+  <style>
+    @font-face { font-family: "Sora"; src: url("assets/fonts/Sora.woff2") format("woff2"); font-weight: 100 800; }
+    @font-face { font-family: "Manrope"; src: url("assets/fonts/Manrope.woff2") format("woff2"); font-weight: 200 800; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono.woff2") format("woff2"); font-weight: 100 800; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; }
+    #root .clip { position: absolute; }
+    #explorer-05-bg { inset: 0; width: 1920px; height: 1080px; background: #06090B; }
+    #explorer-05-copy { left: 0; top: 0; width: 1920px; height: 1080px; }
+    .explorer-05-mask { position: absolute; left: 120px; overflow: hidden; }
+    #explorer-05-index { position: absolute; left: 120px; top: 300px; font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 18px; letter-spacing: 0.14em; color: #2FE6B8; }
+    #explorer-05-verbmask { top: 340px; width: 690px; height: 180px; }
+    #explorer-05-verb { font-family: "Sora", sans-serif; font-weight: 700; font-size: 118px; line-height: 1.1; letter-spacing: -0.04em; color: #F4F8F7; white-space: nowrap; }
+    #explorer-05-benefit { position: absolute; left: 120px; top: 540px; max-width: 600px; font-family: "Manrope", sans-serif; font-size: 34px; line-height: 1.4; color: #B7C2BF; }
+    #explorer-05-win { left: 820px; top: 150px; width: 980px; height: 653px; border-radius: 12px; border: 1px solid #1A2427; background: #0A0F11; overflow: hidden; box-sizing: border-box; }
+    #explorer-05-bar { position: absolute; left: 0; top: 0; right: 0; height: 44px; border-bottom: 1px solid #1A2427; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; font-family: "JetBrains Mono", monospace; font-size: 14px; letter-spacing: 0.14em; color: #5F6D69; background: #0A0F11; z-index: 3; box-sizing: border-box; }
+    #explorer-05-body { position: absolute; left: 0; top: 44px; width: 978px; height: 607px; overflow: hidden; }
+    #explorer-05-world { position: absolute; left: 0; top: 0; width: 978px; height: 652px; transform-origin: 345px 400px; }
+    #explorer-05-world img { display: block; width: 978px; height: 652px; }
+    #explorer-05-wipe { position: absolute; left: 0; top: 0; width: 978px; height: 2px; background: #2FE6B8; z-index: 2; }
+    #explorer-05-chip { position: absolute; left: 600px; top: 250px; padding: 12px 18px; border: 1px solid #2FE6B8; background: #06090B; font-family: "JetBrains Mono", monospace; font-size: 16px; letter-spacing: 0.14em; color: #2FE6B8; white-space: nowrap; z-index: 2; }
+    #explorer-05-chip::before { content: ""; position: absolute; left: -40px; top: 50%; width: 40px; height: 1px; background: #2FE6B8; }
+  </style>
+
+  <div data-hf-id="hf-pwq6" id="explorer-05-bg" class="clip" data-start="0" data-duration="4.1" data-track-index="0"></div>
+
+  <div data-hf-id="hf-dmxx" id="explorer-05-copy" class="clip" data-start="0" data-duration="4.1" data-track-index="1">
+    <div data-hf-id="hf-shai" id="explorer-05-index">03</div>
+    <div data-hf-id="hf-jm09" id="explorer-05-verbmask" class="explorer-05-mask"><div data-hf-id="hf-jtup" id="explorer-05-verb">Explorer.</div></div>
+    <div data-hf-id="hf-dz8k" id="explorer-05-benefit">Veille : CVE, menaces, IOC.</div>
+  </div>
+
+  <div data-hf-id="hf-on4h" id="explorer-05-win" class="clip" data-start="0" data-duration="4.1" data-track-index="2">
+    <div data-hf-id="hf-nur4" id="explorer-05-bar"><span data-hf-id="hf-r8fr">app.cybergram.dev / intelligence</span><span data-hf-id="hf-ltdt">DONNÉES DE DÉMONSTRATION</span></div>
+    <div data-hf-id="hf-gr11" id="explorer-05-body">
+      <div data-hf-id="hf-5g44" id="explorer-05-world" data-layout-allow-overflow>
+        <img data-hf-id="hf-j9wj" src="assets/intelligence.png" alt="Module Intelligence CyberGram">
+      </div>
+      <div data-hf-id="hf-fx3g" id="explorer-05-wipe"></div>
+      <div data-hf-id="hf-swvg" id="explorer-05-chip">CVE · MENACES · IOC</div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+
+      // Scene 1 (0–0.8s): index + verb mask-rise, window scan-wipe in
+      tl.fromTo("#explorer-05-index", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 0);
+      tl.fromTo("#explorer-05-verb", { yPercent: 105 }, { yPercent: 0, duration: 0.55, ease: "power3.out" }, 0.05);
+      tl.fromTo("#explorer-05-world", { clipPath: "inset(0% 0% 100% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.65, ease: "power2.inOut" }, 0.1);
+      tl.fromTo("#explorer-05-wipe", { y: 0, opacity: 1 }, { y: 605, duration: 0.65, ease: "power2.inOut" }, 0.1);
+      tl.to("#explorer-05-wipe", { opacity: 0, duration: 0.1 }, 0.75);
+
+      // Scene 2 (0.8–2.2s): camera push toward the CVE list + callout chip pop
+      tl.fromTo("#explorer-05-world", { scale: 1, x: 0, y: 0 }, { scale: 1.35, x: 40, y: -60, duration: 1.4, ease: "power2.inOut" }, 0.8);
+      tl.fromTo("#explorer-05-chip", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, 1.4);
+
+      // Scene 3 (2.2–3.5s): benefit line fades up, border warms toward amber
+      tl.fromTo("#explorer-05-benefit", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 2.2);
+      tl.to("#explorer-05-world", { scale: 1.39, duration: 1.3, ease: "none" }, 2.2);
+      tl.fromTo("#explorer-05-win", { borderColor: "#1A2427" }, { borderColor: "#FF9F2E", duration: 0.4, ease: "power1.in" }, 3.1);
+
+      window.__timelines["05-explorer"] = tl;
+    })();
+  </script>
+</div>
+</template>
