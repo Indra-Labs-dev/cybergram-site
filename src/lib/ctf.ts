@@ -81,7 +81,7 @@ export const normalizeFlag = (s: string) => s.trim().toLowerCase().replace(/\s+/
 export const BONUS = [
   { id: "console", clue: "Les développeurs regardent toujours la console de cette page.", hash: "1543f1966c7b33efab3dddf88c17ff44c909b9d73a25776a6d87e96907ae9d78" },
   { id: "entete", clue: "Cette page répond avec un en-tête HTTP inhabituel.", hash: "a32c36e88a2a6e87bf32d13e1395db1cc79a6173c8b29ec2a64396c16d33ef6c" },
-  { id: "404", clue: "Une page 404 liste un fichier caché (ls -a). Cliquez dessus : son contenu s'affiche en hexadécimal, à reconvertir en texte (xxd -r -p).", hash: "c13bb3928d8f3eeee63507ccd6a30c715cb8688d17b5157d63feb1e4ae25bccf" },
+  { id: "404", clue: "Une page introuvable cache un fichier, à condition de tout lister.", hash: "c13bb3928d8f3eeee63507ccd6a30c715cb8688d17b5157d63feb1e4ae25bccf" },
   { id: "hackpen", clue: "Le terminal HackPen livre une annexe une fois la mission terminée.", hash: "d5888b1dd44979d4c9f920fb43f8a1ac5599f74757390e1b5781930e59a96c0c" },
 ];
 
