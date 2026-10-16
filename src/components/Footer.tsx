@@ -6,7 +6,10 @@ export function Footer() {
     <footer className="footer">
       <div className="container footer__grid">
         <div>
-          <Link href="/" className="logo" aria-label="CyberGram, accueil" />
+          <Link href="/" className="logo-link" aria-label="CyberGram, accueil">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/logo.svg" alt="CyberGram" width={168} height={37} className="logo-svg" />
+          </Link>
           <p className="footer__tag">APPRENDRE. ÉCHANGER. EXPLORER.</p>
         </div>
         <nav aria-label="Navigation secondaire">

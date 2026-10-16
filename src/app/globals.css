@@ -367,10 +367,193 @@ p{margin:0;text-wrap:pretty}
   box-shadow:0 0 12px #2FE6B8;
 }
 
+/* --- Ambient mouse spotlight glow --- */
+.ambient-spotlight{
+  position:fixed;
+  top:-250px;
+  left:-250px;
+  width:500px;
+  height:500px;
+  background:radial-gradient(circle, rgba(47,230,184,0.07) 0%, rgba(47,230,184,0.02) 40%, transparent 70%);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:9;
+  opacity:0;
+  transition:opacity 400ms ease;
+  will-change:transform;
+}
+
+/* --- Top notification banner --- */
+.top-banner{
+  background:linear-gradient(90deg, #071512 0%, #0c1f1a 50%, #071512 100%);
+  border-bottom:1px solid var(--line-teal);
+  font-size:13px;
+  position:relative;
+  z-index:25;
+}
+.top-banner__inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding-block:10px;
+}
+.top-banner__content{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:var(--ink-2);
+}
+.top-banner__text strong{
+  color:var(--teal);
+}
+.top-banner__actions{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.top-banner__cta{
+  font-family:var(--font-mono);
+  font-size:12px;
+  color:var(--teal);
+  font-weight:600;
+  text-decoration:none;
+  transition:color 160ms ease;
+}
+.top-banner__cta:hover{
+  color:var(--teal-hi);
+  text-decoration:underline;
+}
+.top-banner__close{
+  background:transparent;
+  border:0;
+  color:var(--ink-4);
+  font-size:18px;
+  line-height:1;
+  cursor:pointer;
+  padding:4px 6px;
+  transition:color 160ms ease;
+}
+.top-banner__close:hover{
+  color:var(--ink);
+}
+
+/* --- Shot hover sheen effect --- */
+.shot{
+  position:relative;
+}
+.shot::after{
+  content:"";
+  position:absolute;
+  top:-100%;
+  left:-100%;
+  width:300%;
+  height:300%;
+  background:linear-gradient(135deg, transparent 40%, rgba(47,230,184,0.05) 50%, transparent 60%);
+  transform:rotate(25deg);
+  pointer-events:none;
+  transition:opacity 600ms ease;
+  opacity:0;
+}
+.shot:hover::after{
+  opacity:1;
+}
+
+/* --- Copy anchor button --- */
+.anchor-copy-btn{
+  background:transparent;
+  border:1px solid transparent;
+  color:var(--ink-5);
+  cursor:pointer;
+  padding:3px 7px;
+  border-radius:4px;
+  font-family:var(--font-mono);
+  font-size:13px;
+  transition:color 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+.anchor-copy-btn:hover{
+  color:var(--teal);
+  border-color:var(--line-strong);
+  background:rgba(47,230,184,0.05);
+}
+.anchor-copy-btn__copied{
+  color:var(--teal);
+  font-size:11px;
+}
+
+/* --- Waitlist Form --- */
+.waitlist-form{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.waitlist-form__row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.waitlist-form__input{
+  flex:1;
+  min-width:240px;
+  min-height:52px;
+  background:var(--bg-raise);
+  border:1px solid var(--line-strong);
+  border-radius:var(--radius-sm);
+  padding:0 18px;
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:15px;
+  transition:border-color var(--t-fast), box-shadow var(--t-fast);
+}
+.waitlist-form__input:focus{
+  outline:none;
+  border-color:var(--teal);
+  box-shadow:0 0 16px rgba(47,230,184,0.15);
+}
+.waitlist-form__submit{
+  flex-shrink:0;
+}
+.waitlist-form__msg{
+  font-family:var(--font-mono);
+  font-size:13px;
+  margin:0;
+}
+.waitlist-form__msg--error{
+  color:#FF6B6B;
+}
+.waitlist-form__note{
+  font-size:13px;
+  color:var(--ink-4);
+  margin:0;
+}
+.waitlist-success{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:16px 20px;
+  background:var(--bg-teal);
+  border:1px solid var(--teal);
+  border-radius:var(--radius-sm);
+  color:var(--ink);
+  font-size:15px;
+}
+
+/* --- Vector Logo Link --- */
+.logo-link{
+  display:flex;
+  align-items:center;
+  line-height:0;
+}
+.logo-svg{
+  height:37px;
+  width:auto;
+}
+
 /* --- Reduced motion --- */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *{transition:none!important;animation:none!important}
   .accent{background:none;-webkit-background-clip:unset;background-clip:unset;-webkit-text-fill-color:var(--teal);color:var(--teal)}
   .countdown__val{animation:none!important}
+  .ambient-spotlight{display:none!important}
 }

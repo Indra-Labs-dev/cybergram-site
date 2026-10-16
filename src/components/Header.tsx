@@ -25,7 +25,10 @@ export function Header() {
   return (
     <header className="header">
       <div className="container header__bar">
-        <Link href="/" className="logo" aria-label="CyberGram, accueil" />
+        <Link href="/" className="logo-link" aria-label="CyberGram, accueil">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/logo.svg" alt="CyberGram" width={168} height={37} className="logo-svg" />
+        </Link>
         <nav className="nav" aria-label="Navigation principale">
           {NAV.map((n) => (
             <Link key={n.href} href={n.href} aria-current={path === n.href ? "page" : undefined}>{n.label}</Link>

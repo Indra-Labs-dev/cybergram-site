@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 40" width="180" height="40" fill="none">
+  <!-- CyberGram Icon: Hexagon Shield with Inner Circuit Nodes -->
+  <g transform="translate(4, 2)">
+    <polygon points="18,2 32,10 32,26 18,34 4,26 4,10" stroke="#2FE6B8" stroke-width="2.5" fill="#071210" stroke-linejoin="round"/>
+    <!-- Central tech circuit -->
+    <circle cx="18" cy="18" r="3.5" fill="#2FE6B8"/>
+    <path d="M18 10 L18 14.5 M18 21.5 L18 26 M10 18 L14.5 18 M21.5 18 L26 18" stroke="#2FE6B8" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="18" cy="8" r="1.5" fill="#6FF0CE"/>
+    <circle cx="28" cy="18" r="1.5" fill="#FF9F2E"/>
+  </g>
+  
+  <!-- CyberGram Typography -->
+  <text x="46" y="26" font-family="'Sora', system-ui, -apple-system, sans-serif" font-weight="700" font-size="20" fill="#F4F8F7" letter-spacing="-0.03em">
+    Cyber<tspan fill="#2FE6B8">Gram</tspan>
+  </text>
+</svg>

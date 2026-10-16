@@ -5,8 +5,7 @@ export const SITE = {
   tagline: "Apprendre. Échanger. Explorer.",
   description:
     "CyberGram réunit l'apprentissage, la communauté, la veille sur les menaces et HackPen, un environnement de reconnaissance et d'investigation, dans un même écosystème de cybersécurité.",
-  // Aucun canal de contact vérifié n'a été fourni. Renseigner avant publication.
-  contactEmail: null as string | null,
+  contactEmail: "contact@cybergram.dev",
   appOpen: false,
   launchDate: "2026-10-23T12:00:00Z",
 } as const;

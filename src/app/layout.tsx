@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Sora, Manrope, JetBrains_Mono } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { TopBar } from "@/components/TopBar";
+import { AmbientGlow } from "@/components/AmbientGlow";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
@@ -42,6 +44,12 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/images/logo.png" },
+    ],
+  },
   openGraph: {
     type: "website",
     locale: "fr_FR",
@@ -49,13 +57,14 @@ export const metadata: Metadata = {
     title: `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
     url: SITE.url,
-    images: [{ url: "/images/logo.png", width: 1536, height: 1024, alt: "CyberGram" }],
+    images: [{ url: "/images/og-image.svg", width: 1200, height: 630, alt: "CyberGram — Apprendre. Échanger. Explorer." }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
     creator: "@CyberGram",
+    images: ["/images/og-image.svg"],
   },
 };
 
@@ -66,6 +75,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="fr" className={`${sora.variable} ${manrope.variable} ${mono.variable}`}>
       <body>
         <a className="skip" href="#contenu">Aller au contenu</a>
+        <TopBar />
+        <AmbientGlow />
         <Header />
         <main id="contenu">{children}</main>
         <Footer />
