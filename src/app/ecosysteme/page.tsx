@@ -1,0 +1,44 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { PageHead, Eyebrow, Shot, LaunchBlock } from "@/components/ui";
+import { Pillars } from "@/components/Sections";
+
+export const metadata: Metadata = {
+  title: "Écosystème",
+  description: "Comment s'articulent la plateforme CyberGram, ses ressources d'apprentissage, sa communauté, son module Intelligence et HackPen.",
+  alternates: { canonical: "/ecosysteme" },
+  openGraph: { title: "Écosystème · CyberGram", description: "Comment s'articulent la plateforme CyberGram, ses ressources d'apprentissage, sa communauté, son module Intelligence et HackPen.", url: "/ecosysteme" },
+};
+
+const PARTS = [
+  { t: "CyberGram", role: "Plateforme principale", d: "L'espace commun : compte, profil, notifications et recherche globale. Il donne accès à l'apprentissage, à la communauté et à l'intelligence." },
+  { t: "Ressources", role: "Apprendre · Blog · Événements", d: "Cours, tutoriels, articles et agenda d'événements pour progresser et rester à jour." },
+  { t: "Intelligence", role: "Veille", d: "CVE, menaces, acteurs, IOC et rapports, présentés pour être compris et exploités." },
+  { t: "HackPen", role: "Pratique", d: "Environnement de reconnaissance et d'investigation : projets, cibles, workflows, findings et rapports." },
+];
+
+export default function Page() {
+  return (
+    <>
+      <PageHead eyebrow="Écosystème" title="Un parcours continu, de la lecture à la pratique." lead="CyberGram est organisé autour de trois verbes. Chaque composant a un rôle précis et renvoie vers les autres." />
+      <section className="container section" style={{ paddingTop: 72 }}><Pillars /></section>
+      <section className="container section" aria-labelledby="parts">
+        <Eyebrow>Composants</Eyebrow>
+        <h2 id="parts" className="h2">Qui fait quoi.</h2>
+        <div className="grid-cells">
+          {PARTS.map((p) => <div className="cell" key={p.t}><div className="eyebrow" style={{ color: "var(--ink-4)" }}>{p.role}</div><h3 style={{ marginTop: 12 }}>{p.t}</h3><p>{p.d}</p></div>)}
+        </div>
+      </section>
+      <section className="container section">
+        <div className="split split--top">
+          <div><Eyebrow>Relations</Eyebrow><h2 className="h2">Intelligence alimente la pratique.</h2>
+            <p className="body" style={{ marginTop: 20 }}>Le module Intelligence met en avant HackPen pour passer « de la veille à l&apos;action ». Les deux espaces partagent le même compte et la même identité visuelle, avec un accent orange propre à HackPen.</p>
+            <div className="btn-row" style={{ marginTop: 28 }}><Link className="btn btn--ghost" href="/hackpen">Découvrir HackPen</Link></div>
+          </div>
+          <Shot src="/images/intelligence.png" alt="Capture du module Intelligence de CyberGram" />
+        </div>
+      </section>
+      <LaunchBlock />
+    </>
+  );
+}

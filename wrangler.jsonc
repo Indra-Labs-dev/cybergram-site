@@ -1,0 +1,13 @@
+// Worker "assets-only" : aucun code serveur, tout est servi depuis ./out
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cybergram-site",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./out",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+  // Domaine : à lier manuellement (voir README, section Domaine).
+  // "routes": [{ "pattern": "cybergram.dev", "custom_domain": true }]
+}
