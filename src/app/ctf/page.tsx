@@ -5,7 +5,7 @@ import { createPageMetadata } from "@/lib/page-metadata";
 
 export const metadata = createPageMetadata({
   title: "Mini-CTF",
-  description: "Trois défis de cybersécurité à résoudre dans le navigateur : décodage, analyse de journal et audit d'en-têtes HTTP.",
+  description: "Cinq défis de cybersécurité tirés pour vous, un défi du jour, des drapeaux cachés et un classement facultatif.",
   path: "/ctf",
 });
 
@@ -13,7 +13,7 @@ export default function Page() {
   return (
     <>
       <BreadcrumbJsonLd items={[{ name: "Mini-CTF", href: "/ctf" }]} />
-      <PageHead eyebrow="Mini-CTF · avant l'ouverture" title="Trois drapeaux à capturer." lead="Un avant-goût de CyberGram : trois petits défis à résoudre dans votre navigateur. Format des drapeaux : CG{...}. Aucune donnée n'est envoyée, votre progression reste sur cet appareil." />
+      <PageHead eyebrow="Mini-CTF · avant l'ouverture" title="Cinq drapeaux, rien que pour vous." lead="Un avant-goût de CyberGram : cinq défis tirés au hasard pour vous, avec des données et des drapeaux propres à votre partie. Format : CG{...}. Chaque indice coûte un quart des points du défi. Pas de compte : votre partie tient dans un cookie de ce navigateur." />
       <section className="container section" style={{ paddingTop: 64 }}>
         <Ctf />
       </section>

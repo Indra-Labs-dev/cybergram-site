@@ -101,7 +101,12 @@ export function HackPenTerminal() {
         { kind: "dim", text: "→ méthode" },
         { kind: "dim", text: "→ constats et recommandations" },
         { kind: "ok", text: `✓ Rapport « ${st.project} » prêt. Mission complète.` },
+        { kind: "dim", text: "  annexe jointe : rapport.txt" },
       ], () => setSt((s) => ({ ...s, report: true })));
+    }
+    if (a === "cat" && b === "rapport.txt") {
+      if (!st.report) return push({ kind: "err", text: "✗ cat : rapport.txt : fichier introuvable" });
+      return push({ kind: "out", text: `  Rapport « ${st.project} » · périmètre *.demo.example · 1 constat Moyen` }, { kind: "ok", text: "  Accusé de réception : CG{rapport_remis_au_client}" });
     }
     push({ kind: "err", text: `Commande inconnue : ${cmd}. Tapez « aide ».` });
   };

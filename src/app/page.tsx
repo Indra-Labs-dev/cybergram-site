@@ -104,8 +104,8 @@ export default function Home() {
         <AnimateOnScroll className="ctf-teaser">
           <div>
             <Eyebrow>05 — À vous de jouer</Eyebrow>
-            <h2 id="ctf-title" className="h2">Trois drapeaux avant l&apos;ouverture.</h2>
-            <p className="body" style={{ marginTop: 20 }}>Décoder un en-tête, repérer une attaque dans un journal, auditer une réponse HTTP. Un mini-CTF jouable dans le navigateur, sans inscription.</p>
+            <h2 id="ctf-title" className="h2">Cinq drapeaux, tirés pour vous.</h2>
+            <p className="body" style={{ marginTop: 20 }}>Décoder, lire un journal, casser un chiffrement faible : chaque joueur reçoit ses propres défis et ses propres drapeaux. Plus un défi du jour et des drapeaux cachés dans le site. Sans inscription.</p>
             <div className="btn-row" style={{ marginTop: 28 }}><Link href="/ctf" className="btn btn--primary">Lancer le mini-CTF →</Link></div>
           </div>
           <pre className="ctf__data ctf__data--teaser" aria-hidden="true"><code>{"X-Debug-Token: Q0d7YmFzZTY0X25l…\n\n09:12:06 auth failed  src=203.0.113.42\n09:12:11 auth ok      src=203.0.113.42\n\ncontent-security-policy: ???"}</code></pre>

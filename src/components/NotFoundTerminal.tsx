@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
+
+const HIDDEN = "43477b686f72735f706572696d657472655f6d6169735f637572696575787d";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { NAV } from "@/lib/site";
@@ -10,9 +12,10 @@ export function NotFoundTerminal() {
   const lines = [
     `$ cible ajouter cybergram.dev${path}`,
     `✗ 404 : ${path} est hors du périmètre connu.`,
-    "$ ls /",
+    "$ ls -a /",
   ];
   const [shown, setShown] = useState(lines.length);
+  const [cat, setCat] = useState(false);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -28,12 +31,14 @@ export function NotFoundTerminal() {
         {lines.slice(0, shown).map((l, i) => <div key={i} className={l.startsWith("✗") ? "nf__err" : "nf__in"}>{l}</div>)}
         {shown >= 3 && (
           <ul className="nf__ls">
+            <li><button type="button" className="nf__hidden" onClick={() => setCat(true)}>.drapeau</button></li>
             <li><Link href="/">accueil/</Link></li>
             {NAV.map((n) => <li key={n.href}><Link href={n.href}>{n.href.slice(1)}/</Link></li>)}
             <li><Link href="/lancement">lancement/</Link></li>
             <li><Link href="/glossaire">glossaire/</Link></li>
           </ul>
         )}
+        {cat && <><div className="nf__in">$ cat /.drapeau | xxd -p</div><div className="nf__hex">{HIDDEN}</div></>}
         <span className="term__caret" aria-hidden="true" />
       </div>
     </div>

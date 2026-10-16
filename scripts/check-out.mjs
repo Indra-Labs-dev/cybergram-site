@@ -3,7 +3,7 @@ import { readdir, readFile, stat } from "node:fs/promises";
 import { join, extname } from "node:path";
 
 const OUT = "out";
-const ROUTES = ["index.html", "ecosysteme.html", "fonctionnalites.html", "hackpen.html", "a-propos.html", "lancement.html", "glossaire.html", "ctf.html", "mentions-legales.html", "confidentialite.html", "404.html", "sitemap.xml", "robots.txt"];
+const ROUTES = ["ctf/badge/expert.html", "ctf/badge/confirme.html", "ctf/badge/initie.html", "index.html", "ecosysteme.html", "fonctionnalites.html", "hackpen.html", "a-propos.html", "lancement.html", "glossaire.html", "ctf.html", "mentions-legales.html", "confidentialite.html", "404.html", "sitemap.xml", "robots.txt"];
 const errors = [];
 const exists = async (p) => stat(p).then(() => true, () => false);
 

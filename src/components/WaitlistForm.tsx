@@ -28,7 +28,9 @@ export function WaitlistForm() {
       if (!response.ok) throw new Error(result.error || "Inscription impossible.");
 
       setStatus("success");
-      setMessage("Merci ! Votre inscription est enregistrée. Vous serez prévenu(e) en priorité le jour du lancement.");
+      setMessage(result.priority
+        ? "Merci ! Votre mini-CTF terminé vous place en tête de l'envoi le jour du lancement."
+        : "Merci ! Votre inscription est enregistrée. Vous serez prévenu(e) en priorité le jour du lancement.");
       setEmail("");
     } catch (error) {
       setStatus("error");

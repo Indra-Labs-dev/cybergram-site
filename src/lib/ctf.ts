@@ -1,6 +1,7 @@
-// Défis du mini-CTF. Seule l'empreinte SHA-256 du drapeau (en minuscules) est livrée :
-// le drapeau n'apparaît jamais en clair dans le code. Données fictives : plages
-// d'adresses réservées à la documentation (RFC 5737) et domaine demo.example.
+// Côté navigateur du mini-CTF. Les défis personnels sont générés et vérifiés par le Worker
+// (src/lib/ctf-engine.ts) ; ce fichier ne garde que le mode hors ligne, utilisé si l'API ne
+// répond pas, et les drapeaux cachés du site. Seule l'empreinte SHA-256 des drapeaux
+// (en minuscules) est livrée. Données fictives : RFC 5737 et domaine demo.example.
 
 export type Challenge = {
   id: string;
@@ -14,6 +15,7 @@ export type Challenge = {
   explain: string;
 };
 
+/** Mode hors ligne : mêmes défis pour tous, vérifiés dans le navigateur. */
 export const CHALLENGES: Challenge[] = [
   {
     id: "encodage",
@@ -74,3 +76,19 @@ export async function sha256(text: string) {
 }
 
 export const normalizeFlag = (s: string) => s.trim().toLowerCase().replace(/\s+/g, "");
+
+/** Drapeaux cachés ailleurs sur le site. */
+export const BONUS = [
+  { id: "console", clue: "Les développeurs regardent toujours la console de cette page.", hash: "1543f1966c7b33efab3dddf88c17ff44c909b9d73a25776a6d87e96907ae9d78" },
+  { id: "entete", clue: "Cette page répond avec un en-tête HTTP inhabituel.", hash: "a32c36e88a2a6e87bf32d13e1395db1cc79a6173c8b29ec2a64396c16d33ef6c" },
+  { id: "404", clue: "Une page introuvable cache un fichier, à condition de tout lister.", hash: "c13bb3928d8f3eeee63507ccd6a30c715cb8688d17b5157d63feb1e4ae25bccf" },
+  { id: "hackpen", clue: "Le terminal HackPen livre une annexe une fois la mission terminée.", hash: "d5888b1dd44979d4c9f920fb43f8a1ac5599f74757390e1b5781930e59a96c0c" },
+];
+
+export type Tier = "initie" | "confirme" | "expert";
+export const TIERS: Record<Tier, { label: string; line: string }> = {
+  initie: { label: "Initié", line: "a terminé le mini-CTF CyberGram." },
+  confirme: { label: "Confirmé", line: "a terminé le mini-CTF CyberGram avec peu d'indices." },
+  expert: { label: "Expert", line: "a terminé le mini-CTF CyberGram presque sans aide." },
+};
+export const tierOf = (score: number, max: number): Tier => (score >= max * 0.9 ? "expert" : score >= max * 0.6 ? "confirme" : "initie");

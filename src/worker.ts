@@ -1,6 +1,7 @@
 import { neon } from "@neondatabase/serverless";
 import { SITE } from "@/lib/site";
 import { createLaunchEmail } from "@/lib/email-templates";
+import { handleCtf, hasFinished } from "./worker-ctf";
 
 interface Env {
   ASSETS: { fetch(request: Request): Promise<Response> };
@@ -9,6 +10,7 @@ interface Env {
   EMAIL_FROM?: string;
   EMAIL_FROM_NAME?: string;
   WAITLIST_ADMIN_TOKEN?: string;
+  CTF_SECRET?: string;
 }
 
 const json = (body: object, status = 200) =>
@@ -20,6 +22,7 @@ const json = (body: object, status = 200) =>
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
+    if (url.pathname.startsWith("/api/ctf/")) return handleCtf(request, env, url);
     if (url.pathname === "/api/unsubscribe" && (request.method === "GET" || request.method === "POST")) {
       const token = url.searchParams.get("token") || "";
       if (!/^[0-9a-f-]{36}$/i.test(token)) return new Response("Lien de désinscription invalide.", { status: 400 });
@@ -44,7 +47,7 @@ export default {
       if (!env.BREVO_API_KEY || !env.EMAIL_FROM) return json({ error: "Le service d'e-mail n'est pas configuré." }, 503);
       try {
         const sql = neon(env.DATABASE_URL);
-        const subscribers = await sql`SELECT id, email, unsubscribe_token FROM launch_waitlist WHERE unsubscribed_at IS NULL AND notified_at IS NULL ORDER BY id LIMIT 50`;
+        const subscribers = await sql`SELECT id, email, unsubscribe_token FROM launch_waitlist WHERE unsubscribed_at IS NULL AND notified_at IS NULL ORDER BY ctf_completed DESC, id LIMIT 50`;
         let sent = 0;
         let failed = 0;
         for (const subscriber of subscribers) {
@@ -103,6 +106,13 @@ export default {
 
     try {
       const sql = neon(env.DATABASE_URL);
+      // Une partie de CTF terminée fait passer l'adresse en tête de l'envoi du jour J.
+      if (await hasFinished(request, env)) {
+        try {
+          await sql`INSERT INTO launch_waitlist (email, ctf_completed) VALUES (${email}, TRUE) ON CONFLICT (email) DO UPDATE SET ctf_completed = TRUE`;
+          return json({ ok: true, priority: true });
+        } catch { /* migration 003 absente : inscription simple */ }
+      }
       await sql`INSERT INTO launch_waitlist (email) VALUES (${email}) ON CONFLICT (email) DO NOTHING`;
       return json({ ok: true });
     } catch {

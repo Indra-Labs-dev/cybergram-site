@@ -895,3 +895,22 @@ body{overflow-x:clip}
   .cve__gauge span{clip-path:none!important}
   ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
 }
+
+/* --- Mini-CTF : parties personnelles, défi du jour, drapeaux cachés, classement --- */
+.ctf__top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.ctf__top .ctf__progress{flex:1 1 320px}
+.ctf__note{margin-top:16px;font:400 13px var(--font-mono);color:var(--ink-4)}
+.ctf__section{margin-top:clamp(64px,9vw,112px)}
+.ctf__section .ctf__progress{margin-top:24px}
+.ctf__card--wide{max-width:860px}
+.ctf__details summary{list-style:none}
+.ctf__details summary::-webkit-details-marker{display:none}
+.ctf__clues{list-style:none;margin:20px 0 24px;padding:0;display:grid;gap:10px;color:var(--ink-3);font-size:15px}
+.ctf__clues .is-done{color:var(--teal)}
+.ctf__lb{list-style:none;margin:28px 0 0;padding:0;max-width:640px;border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden}
+.ctf__lb li{display:grid;grid-template-columns:3ch 1fr auto auto;gap:16px;padding:12px 18px;font:400 14px var(--font-mono);color:var(--ink-2);border-top:1px solid var(--line)}
+.ctf__lb li:first-child{border-top:0;color:var(--teal)}
+.ctf__lb li span:first-child,.ctf__lb li span:last-child{color:var(--ink-4)}
+.nf__hidden{background:none;border:0;padding:4px 0;font:inherit;color:var(--ink-4);cursor:pointer}
+.nf__hidden:hover{color:var(--teal)}
+.nf__hex{color:var(--ink-3);overflow-wrap:anywhere}
