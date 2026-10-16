@@ -1,14 +1,13 @@
-import type { Metadata } from "next";
 import { PageHead, LaunchBlock } from "@/components/ui";
 import { Modules } from "@/components/Modules";
 import { BreadcrumbJsonLd } from "@/components/Breadcrumbs";
+import { createPageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Fonctionnalités",
   description: "Les modules de CyberGram : Apprendre, Communauté, Événements, Intelligence et HackPen, avec leur statut avant l'ouverture.",
-  alternates: { canonical: "/fonctionnalites" },
-  openGraph: { title: "Fonctionnalités · CyberGram", description: "Les modules de CyberGram : Apprendre, Communauté, Événements, Intelligence et HackPen, avec leur statut avant l'ouverture.", url: "/fonctionnalites" },
-};
+  path: "/fonctionnalites",
+});
 
 export default function Page() {
   return (

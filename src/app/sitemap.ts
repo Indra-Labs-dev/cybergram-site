@@ -15,7 +15,6 @@ const ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.S
 export default function sitemap(): MetadataRoute.Sitemap {
   return ROUTES.map((r) => ({
     url: SITE.url + r.path,
-    lastModified: new Date(),
     changeFrequency: r.changeFrequency,
     priority: r.priority,
   }));

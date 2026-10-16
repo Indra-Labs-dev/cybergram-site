@@ -1,13 +1,12 @@
-import type { Metadata } from "next";
 import { PageHead, Eyebrow, LaunchBlock } from "@/components/ui";
 import { BreadcrumbJsonLd } from "@/components/Breadcrumbs";
+import { createPageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "À propos",
   description: "La vision de CyberGram : rendre la cybersécurité accessible en réunissant apprentissage, communauté et pratique.",
-  alternates: { canonical: "/a-propos" },
-  openGraph: { title: "À propos · CyberGram", description: "La vision de CyberGram : rendre la cybersécurité accessible en réunissant apprentissage, communauté et pratique.", url: "/a-propos" },
-};
+  path: "/a-propos",
+});
 
 const PRINCIPLES = [
   { t: "Accessible", d: "Des contenus pensés pour tous les niveaux, avec un vocabulaire expliqué." },

@@ -1,16 +1,15 @@
-import type { Metadata } from "next";
 import { PageHead, Eyebrow } from "@/components/ui";
 import { Countdown } from "@/components/Countdown";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { SITE, launchDateLabel } from "@/lib/site";
 import { BreadcrumbJsonLd } from "@/components/Breadcrumbs";
+import { createPageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Lancement",
-  description: "État de préparation de l'application CyberGram et modalités d'annonce de son ouverture.",
-  alternates: { canonical: "/lancement" },
-  openGraph: { title: "Lancement · CyberGram", description: "État de préparation de l'application CyberGram et modalités d'annonce de son ouverture.", url: "/lancement" },
-};
+  description: "Suivez l'ouverture de CyberGram, plateforme de formation et de veille en cybersécurité, et inscrivez-vous pour recevoir l'annonce du lancement.",
+  path: "/lancement",
+});
 
 export default function Page() {
   return (

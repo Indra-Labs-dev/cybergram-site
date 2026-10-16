@@ -1,8 +1,15 @@
-import type { Metadata } from "next";
 import { PageHead } from "@/components/ui";
 import { SITE } from "@/lib/site";
+import { createPageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = { title: "Mentions légales", alternates: { canonical: "/mentions-legales" }, robots: { index: false, follow: true } };
+export const metadata = {
+  ...createPageMetadata({
+    title: "Mentions légales",
+    description: "Éditeur, directeur de publication et hébergement du site CyberGram.",
+    path: "/mentions-legales",
+  }),
+  robots: { index: false, follow: true },
+};
 
 export default function Page() {
   return (

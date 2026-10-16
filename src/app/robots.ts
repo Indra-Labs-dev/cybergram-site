@@ -4,5 +4,9 @@ import { SITE } from "@/lib/site";
 export const dynamic = "force-static";
 
 export default function robots(): MetadataRoute.Robots {
-  return { rules: [{ userAgent: "*", allow: "/" }], sitemap: SITE.url + "/sitemap.xml", host: SITE.url };
+  return {
+    rules: [{ userAgent: "*", allow: "/", disallow: "/api/" }],
+    sitemap: `${SITE.url}/sitemap.xml`,
+    host: SITE.url,
+  };
 }

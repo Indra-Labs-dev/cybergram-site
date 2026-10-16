@@ -20,19 +20,6 @@ export const metadata: Metadata = {
   creator: "CyberGram",
   publisher: "CyberGram",
   category: "technology",
-  keywords: [
-    "cybersécurité",
-    "formation cybersécurité",
-    "pentest",
-    "HackPen",
-    "veille menaces",
-    "CTF",
-    "sécurité offensive",
-    "reconnaissance",
-    "investigation",
-    "CyberGram",
-  ],
-  alternates: { canonical: "/" },
   robots: {
     index: true,
     follow: true,
@@ -63,7 +50,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
-    creator: "@CyberGram",
     images: ["/images/og-image.png"],
   },
 };

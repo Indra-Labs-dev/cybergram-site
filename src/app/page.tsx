@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Eyebrow, Shot, LaunchBlock } from "@/components/ui";
 import { Pillars, HackPenBand, Audiences, Faq } from "@/components/Sections";
@@ -6,38 +5,34 @@ import { Modules } from "@/components/Modules";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { SITE } from "@/lib/site";
 import { FAQ } from "@/lib/content";
+import { createPageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = { alternates: { canonical: "/" } };
+export const metadata = createPageMetadata({
+  title: "CyberGram — Apprendre. Échanger. Explorer.",
+  description: "CyberGram réunit formation en cybersécurité, communauté, veille sur les menaces et pratique encadrée avec HackPen.",
+  path: "/",
+  absoluteTitle: true,
+});
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${SITE.url}/#website`,
   name: SITE.name,
   url: SITE.url,
   description: SITE.description,
   inLanguage: "fr",
-  publisher: {
-    "@type": "Organization",
-    name: SITE.name,
-    url: SITE.url,
-    logo: `${SITE.url}/images/logo.png`,
-  },
-  potentialAction: {
-    "@type": "SearchAction",
-    target: `${SITE.url}/?q={search_term_string}`,
-    "query-input": "required name=search_term_string",
-  },
-  sameAs: [],
+  publisher: { "@id": `${SITE.url}/#organization` },
 };
 
 const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": `${SITE.url}/#organization`,
   name: SITE.name,
   url: SITE.url,
-  logo: `${SITE.url}/images/logo.png`,
+  logo: `${SITE.url}/images/logo-icon.png`,
   description: SITE.description,
-  sameAs: [],
 };
 
 const faqJsonLd = {

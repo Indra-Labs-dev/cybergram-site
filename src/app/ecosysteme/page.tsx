@@ -1,15 +1,14 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHead, Eyebrow, Shot, LaunchBlock } from "@/components/ui";
 import { Pillars } from "@/components/Sections";
 import { BreadcrumbJsonLd } from "@/components/Breadcrumbs";
+import { createPageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Écosystème",
   description: "Comment s'articulent la plateforme CyberGram, ses ressources d'apprentissage, sa communauté, son module Intelligence et HackPen.",
-  alternates: { canonical: "/ecosysteme" },
-  openGraph: { title: "Écosystème · CyberGram", description: "Comment s'articulent la plateforme CyberGram, ses ressources d'apprentissage, sa communauté, son module Intelligence et HackPen.", url: "/ecosysteme" },
-};
+  path: "/ecosysteme",
+});
 
 const PARTS = [
   { t: "CyberGram", role: "Plateforme principale", d: "L'espace commun : compte, profil, notifications et recherche globale. Il donne accès à l'apprentissage, à la communauté et à l'intelligence." },

@@ -1,14 +1,13 @@
-import type { Metadata } from "next";
 import { PageHead, Eyebrow, Shot, LaunchBlock } from "@/components/ui";
 import { HackPenBand } from "@/components/Sections";
 import { BreadcrumbJsonLd } from "@/components/Breadcrumbs";
+import { createPageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "HackPen",
   description: "HackPen, l'environnement de reconnaissance et d'investigation de l'écosystème CyberGram : projets, cibles, workflows, findings et rapports.",
-  alternates: { canonical: "/hackpen" },
-  openGraph: { title: "HackPen · CyberGram", description: "HackPen, l'environnement de reconnaissance et d'investigation de l'écosystème CyberGram : projets, cibles, workflows, findings et rapports.", url: "/hackpen" },
-};
+  path: "/hackpen",
+});
 
 const VIEWS = [
   { img: "/images/hackpen.png", alt: "Capture du tableau de bord HackPen", t: "Tableau de bord", d: "Activité d'exécution, répartition des findings et actions rapides." },

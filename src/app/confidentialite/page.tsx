@@ -1,8 +1,15 @@
-import type { Metadata } from "next";
 import { PageHead } from "@/components/ui";
 import { SITE } from "@/lib/site";
+import { createPageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = { title: "Politique de confidentialité", alternates: { canonical: "/confidentialite" }, robots: { index: false, follow: true } };
+export const metadata = {
+  ...createPageMetadata({
+    title: "Politique de confidentialité",
+    description: "Données personnelles collectées par CyberGram, usage de la liste d’attente et droits des personnes.",
+    path: "/confidentialite",
+  }),
+  robots: { index: false, follow: true },
+};
 
 export default function Page() {
   return (
